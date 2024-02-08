@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2716976485968455917}
   - component: {fileID: 3250856510239680702}
   - component: {fileID: -6581408767356816004}
+  - component: {fileID: -7623346035508709062}
   m_Layer: 0
   m_Name: R_Bullet
   m_TagString: Untagged
@@ -133,3 +134,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014029884, y: 0.014029905, z: 0.055794902}
   m_Center: {x: 0.0000005722977, y: 0.0000000044237822, z: 0.003227353}
+--- !u!114 &-7623346035508709062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248376415694471167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a16ebc543b244c6bdff546f0ae6b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 5

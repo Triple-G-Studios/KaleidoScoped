@@ -14,6 +14,8 @@ namespace FPS
         public Transform projectileOrigin;
         public GameObject projectilePrefab;
 
+        public ProjectilePool projectilePool;
+
         // Configuration
         public float attackRange;
 
@@ -66,10 +68,18 @@ namespace FPS
 
         void OnSecondaryAttack()
         {
-            GameObject projectile = Instantiate(projectilePrefab, projectileOrigin.position, Quaternion.LookRotation(povOrigin.forward));
-            projectile.transform.localScale = Vector3.one * 5f;
-            projectile.GetComponent<Rigidbody>().AddForce(povOrigin.forward * 25f, ForceMode.Impulse);
+            GameObject projectile = projectilePool.GetProjectile();
+            projectile.transform.position = projectileOrigin.position;
+            projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+
+            PaintballProjectile projectileScript = projectile.GetComponent<PaintballProjectile>();
+            if (projectileScript != null)
+            {
+                projectileScript.Initialize(projectilePool, povOrigin.forward, 25f);
+            }
         }
+
+
 
     }
 }
