@@ -19,12 +19,12 @@ public class PlayerController : MonoBehaviour
     public float attackRange;
 
     // State Tracking
-    public List<int> keyIdsObtained;
+    public List<string> keyIdsObtained;
 
     void Awake()
     {
         instance = this;
-        keyIdsObtained = new List<int>();
+        keyIdsObtained = new List<string>();
     }
 
     void OnInteract()
