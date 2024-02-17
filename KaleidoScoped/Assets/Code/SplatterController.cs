@@ -1,20 +1,58 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PaintMovement : MonoBehaviour
 {
-    string color;
+    public string color = "blue";
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        PlayerController targetPlayer = other.GetComponent<PlayerController>();
+        FirstPersonController targetPlayer = other.GetComponent<FirstPersonController>();
 
         if (targetPlayer != null)
         {
             if (color == "purple")
             {
+                targetPlayer.JumpHeight *= 2;
+            }
 
+            if (color == "blue")
+            {
+                targetPlayer.MoveSpeed *= 2;
+                targetPlayer.SprintSpeed *= 2;
+            }
+
+            if (color == "green")
+            {
+                targetPlayer.MoveSpeed /= 2;
+                targetPlayer.SprintSpeed /= 2;
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        FirstPersonController targetPlayer = other.GetComponent<FirstPersonController>();
+
+        if (targetPlayer != null)
+        {
+            if (color == "purple")
+            {
+                targetPlayer.JumpHeight /= 2;
+            }
+
+            if (color == "blue")
+            {
+                targetPlayer.MoveSpeed /= 2;
+                targetPlayer.SprintSpeed /= 2;
+            }
+
+            if (color == "green")
+            {
+                targetPlayer.MoveSpeed *= 2;
+                targetPlayer.SprintSpeed *= 2;
             }
         }
     }
