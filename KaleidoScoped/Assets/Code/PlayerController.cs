@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     // State Tracking
     public List<string> keyIdsObtained;
+    public string currentColor = "";
 
     void Awake()
     {

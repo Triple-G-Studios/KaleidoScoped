@@ -22,15 +22,19 @@ public class SwapPaint : MonoBehaviour
             {
                 case "purple":
                     paintColor = new Color(1f, 0f, 1f);
+                    targetPlayer.currentColor = "purple";
                     break;
                 case "red":
                     paintColor = Color.red;
+                    targetPlayer.currentColor = "red";
                     break;
                 case "green":
                     paintColor = Color.green;
+                    targetPlayer.currentColor = "green";
                     break;
                 case "blue":
                     paintColor = Color.blue;
+                    targetPlayer.currentColor = "blue";
                     break;
             }
 

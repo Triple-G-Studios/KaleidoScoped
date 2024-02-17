@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaintMovement : MonoBehaviour
+public class SplatterController : MonoBehaviour
 {
-    public string color = "blue";
+    public static SplatterController instance;
+    public string color;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -13,21 +19,29 @@ public class PaintMovement : MonoBehaviour
 
         if (targetPlayer != null)
         {
+            //if it has a first person controller, it has a playercontroller
+            color = other.GetComponent<PlayerController>().currentColor;
+
             if (color == "purple")
             {
                 targetPlayer.JumpHeight *= 2;
             }
 
-            if (color == "blue")
+            else if (color == "blue")
             {
                 targetPlayer.MoveSpeed *= 2;
                 targetPlayer.SprintSpeed *= 2;
             }
 
-            if (color == "green")
+            else if (color == "green")
             {
                 targetPlayer.MoveSpeed /= 2;
                 targetPlayer.SprintSpeed /= 2;
+            }
+
+            else if (color == "red")
+            {
+                targetPlayer.JumpHeight = 0;
             }
         }
     }
@@ -38,21 +52,29 @@ public class PaintMovement : MonoBehaviour
 
         if (targetPlayer != null)
         {
+            //if it has a first person controller, it has a playercontroller
+            color = other.GetComponent<PlayerController>().currentColor;
+
             if (color == "purple")
             {
                 targetPlayer.JumpHeight /= 2;
             }
 
-            if (color == "blue")
+            else if (color == "blue")
             {
                 targetPlayer.MoveSpeed /= 2;
                 targetPlayer.SprintSpeed /= 2;
             }
 
-            if (color == "green")
+            else if (color == "green")
             {
                 targetPlayer.MoveSpeed *= 2;
                 targetPlayer.SprintSpeed *= 2;
+            }
+
+            else if (color == "red")
+            {
+                targetPlayer.JumpHeight = 1.2f;
             }
         }
     }
