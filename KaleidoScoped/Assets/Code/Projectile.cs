@@ -21,10 +21,11 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Player"))
         {
             // Do nothing
-        } else
+        }
+        else
         {
             // Paint splatter
             ContactPoint contact = collision.contacts[0];

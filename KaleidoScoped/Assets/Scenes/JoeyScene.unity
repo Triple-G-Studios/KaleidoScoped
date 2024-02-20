@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.83405715, g: 0.7437259, b: 0.6508867, a: 1}
+  m_IndirectSpecularColor: {r: 0.99647385, g: 0.87115663, b: 0.7254972, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3086,7 +3086,7 @@ Transform:
   m_GameObject: {fileID: 134663057}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0002, y: -0, z: 0.382}
+  m_LocalPosition: {x: -0.0002, y: -0, z: 0.472}
   m_LocalScale: {x: 0.099999994, y: 0.5, z: 0.10000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38337,7 +38337,7 @@ GameObject:
   - component: {fileID: 1451921953}
   m_Layer: 6
   m_Name: Paintball Gun
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56205,6 +56205,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016655, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
