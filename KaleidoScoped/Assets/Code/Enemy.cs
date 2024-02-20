@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     // Outlets
+    public GameObject collectiblePrefab;
+
     //NavMeshAgent navAgent;
     Animator animator;
 
@@ -32,5 +34,15 @@ public class Enemy : MonoBehaviour
         }
 
         //animator.SetFloat("velocity", navAgent.velocity.magnitude);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Projectile"))
+        {
+            Destroy(collision.gameObject); // Destroy projectile
+            Destroy(gameObject); // Destroy enemy
+            Instantiate(collectiblePrefab, transform.position, Quaternion.identity); // Spawn paint collectible
+        }
     }
 }
