@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // I swapped these to make shooting on left click
-    void OnSecondaryAttack()
+    /*void OnSecondaryAttack()
     {
         RaycastHit hit;
         bool hitSomething = Physics.Raycast(povOrigin.position, povOrigin.forward, out hit, attackRange);
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
                 targetRigidbody.AddForce(povOrigin.forward * 100f, ForceMode.Impulse);
             }
         }
-    }
+    }*/
     // I swapped these to make shooting on left click
     void OnPrimaryAttack()
     {
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         Projectile projectileScript = projectile.GetComponent<Projectile>();
         if (projectileScript != null)
         {
-            projectileScript.Initialize(projectilePool, povOrigin.forward, 25f);
+            projectileScript.Initialize(projectilePool, povOrigin.forward, 75f);
         }
     }
 
