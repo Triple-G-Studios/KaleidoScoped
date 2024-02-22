@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Enemy
   - KillCounter
+  - KillCounterText
   layers:
   - Default
   - TransparentFX
