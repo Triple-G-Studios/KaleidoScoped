@@ -18,11 +18,14 @@ public class Enemy : MonoBehaviour
     // State Tracking
     //int patrolIndex;
 
+    KillCounter killCounter;
+
     // Methods
-    void Start()
+    private void Start()
     {
         //navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        killCounter = GameObject.FindWithTag("KillCounter").GetComponent<KillCounter>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(collision.gameObject); // Destroy projectile
             Destroy(gameObject); // Destroy enemy
+            killCounter.incrementKills(); // Update kills
             Instantiate(collectiblePrefab, transform.position, Quaternion.identity); // Spawn paint collectible
         }
     }

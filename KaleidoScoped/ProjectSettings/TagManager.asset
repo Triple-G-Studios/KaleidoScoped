@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Projectile
   - Enemy
+  - KillCounter
   layers:
   - Default
   - TransparentFX
