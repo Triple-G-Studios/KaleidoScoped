@@ -22,10 +22,60 @@ public class PlayerController : MonoBehaviour
     public List<string> keyIdsObtained;
     public string currentColor = "";
 
+    public GameObject pauseMenuUI;
+
+    private bool isPaused = false;
+
+    public InputActionAsset actionAsset;
+
+    private InputActionMap playerActionMap;
+
+
+
+
     void Awake()
     {
         instance = this;
         keyIdsObtained = new List<string>();
+        playerActionMap = actionAsset.FindActionMap("Player", true);
+        pauseMenuUI.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    public void PauseGame()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+
+        playerActionMap.Disable();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+        playerActionMap.Enable();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void OnInteract()

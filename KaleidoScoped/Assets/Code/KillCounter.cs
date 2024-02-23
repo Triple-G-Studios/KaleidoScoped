@@ -7,7 +7,7 @@ public class KillCounter : MonoBehaviour
 {
     // Outlets
     public Text counterText;
-    
+
     // Tracking
     int kills;
 
@@ -20,10 +20,12 @@ public class KillCounter : MonoBehaviour
 
     private void displayKills()
     {
-        if(counterText == null)
+        if (counterText == null)
         {
             counterText = GameObject.FindWithTag("KillCounterText").GetComponent<Text>();
-        } else {
+        }
+        else
+        {
             counterText.text = kills.ToString();
         }
     }
@@ -33,4 +35,10 @@ public class KillCounter : MonoBehaviour
         kills++;
         displayKills();
     }
+
+    public int GetKills()
+    {
+        return kills;
+    }
+
 }
