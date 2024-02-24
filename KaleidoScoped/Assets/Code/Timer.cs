@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
@@ -27,9 +28,10 @@ public class Timer : MonoBehaviour
             timerText.color = Color.red;
         }
 
-        if (currTime < 0)
+        if (currTime <= 0)
         {
             currTime = 0;
+            SceneManager.LoadScene("GameOver");
         }
     }
 

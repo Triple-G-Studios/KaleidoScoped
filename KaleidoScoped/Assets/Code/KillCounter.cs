@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class KillCounter : MonoBehaviour
@@ -33,6 +34,10 @@ public class KillCounter : MonoBehaviour
     public void incrementKills()
     {
         kills++;
+        if(kills >= 10)
+        {
+            SceneManager.LoadScene("Victory");
+        }
         displayKills();
     }
 
