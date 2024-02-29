@@ -3,135 +3,130 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
-public class PlayerController : MonoBehaviour
+namespace Kaleidoscope
 {
-    public static PlayerController instance;
-
-    // Outlets
-    public Transform povOrigin;
-    public Transform projectileOrigin;
-    public GameObject projectilePrefab;
-
-    public ProjectilePool projectilePool;
-
-    // Configuration
-    public float attackRange;
-
-    // State Tracking
-    public List<string> keyIdsObtained;
-    public string currentColor = "";
-
-    public GameObject pauseMenuUI;
-
-    private bool isPaused = false;
-
-    public InputActionAsset actionAsset;
-
-    private InputActionMap playerActionMap;
-
-
-
-
-    void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        instance = this;
-        keyIdsObtained = new List<string>();
-        playerActionMap = actionAsset.FindActionMap("Player", true);
-        pauseMenuUI.SetActive(false);
-    }
+        public static PlayerController instance;
 
-    void Update()
-    {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        // Outlets
+        public Transform povOrigin;
+        public Transform projectileOrigin;
+        public GameObject projectilePrefab;
+
+        public ProjectilePool projectilePool;
+
+        // Configuration
+        public float attackRange;
+
+        // State Tracking
+        public List<string> keyIdsObtained;
+        public string currentColor = "";
+
+        public GameObject pauseMenuUI;
+
+        private bool isPaused = false;
+
+        public InputActionAsset actionAsset;
+
+        private InputActionMap playerActionMap;
+
+
+        void Awake()
         {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
+            instance = this;
+            keyIdsObtained = new List<string>();
+            playerActionMap = actionAsset.FindActionMap("Player", true);
+            pauseMenuUI.SetActive(false);
         }
-    }
 
-    public void PauseGame()
-    {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-
-        playerActionMap.Disable();
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    public void ResumeGame()
-    {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-
-        playerActionMap.Enable();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    void OnInteract()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(povOrigin.position, povOrigin.forward, out hit, 2f))
+        void Update()
         {
-            //Debug: Test first person interactions
-            //print("Interacted with " + hit.transform.name + " from " + hit.distance + " m.");
-
-            //Doors
-            // Door targetDoor = hit.transform.GetComponent<Door>();
-            // if (targetDoor)
-            // {
-            //     targetDoor.Interact();
-            // }
-
-            //Buttons
-            // InteractButton targetButton = hit.transform.GetComponent<InteractButton>();
-            // if (targetButton != null)
-            // {
-            //     targetButton.Interact();
-            // }
-        }
-    }
-
-    // I swapped these to make shooting on left click
-    /*void OnSecondaryAttack()
-    {
-        RaycastHit hit;
-        bool hitSomething = Physics.Raycast(povOrigin.position, povOrigin.forward, out hit, attackRange);
-        if (hitSomething)
-        {
-            Rigidbody targetRigidbody = hit.transform.GetComponent<Rigidbody>();
-            if (targetRigidbody)
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
             {
-                targetRigidbody.AddForce(povOrigin.forward * 100f, ForceMode.Impulse);
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else
+                {
+                    PauseGame();
+                }
             }
         }
-    }*/
-    // I swapped these to make shooting on left click
-    void OnPrimaryAttack()
-    {
-        GameObject projectile = projectilePool.GetProjectile();
-        projectile.transform.position = projectileOrigin.position;
-        projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
 
-        Projectile projectileScript = projectile.GetComponent<Projectile>();
-        if (projectileScript != null)
+        public void PauseGame()
         {
-            projectileScript.Initialize(projectilePool, povOrigin.forward, 75f);
+            pauseMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+
+            playerActionMap.Disable();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        public void ResumeGame()
+        {
+            pauseMenuUI.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
+
+            playerActionMap.Enable();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        void OnInteract()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(povOrigin.position, povOrigin.forward, out hit, 2f))
+            {
+                //Debug: Test first person interactions
+                //print("Interacted with " + hit.transform.name + " from " + hit.distance + " m.");
+
+                //Doors
+                // Door targetDoor = hit.transform.GetComponent<Door>();
+                // if (targetDoor)
+                // {
+                //     targetDoor.Interact();
+                // }
+
+                //Buttons
+                // InteractButton targetButton = hit.transform.GetComponent<InteractButton>();
+                // if (targetButton != null)
+                // {
+                //     targetButton.Interact();
+                // }
+            }
+        }
+
+        // I swapped these to make shooting on left click
+        /*void OnSecondaryAttack()
+        {
+            RaycastHit hit;
+            bool hitSomething = Physics.Raycast(povOrigin.position, povOrigin.forward, out hit, attackRange);
+            if (hitSomething)
+            {
+                Rigidbody targetRigidbody = hit.transform.GetComponent<Rigidbody>();
+                if (targetRigidbody)
+                {
+                    targetRigidbody.AddForce(povOrigin.forward * 100f, ForceMode.Impulse);
+                }
+            }
+        }*/
+        // I swapped these to make shooting on left click
+        void OnPrimaryAttack()
+        {
+            GameObject projectile = projectilePool.GetProjectile();
+            projectile.transform.position = projectileOrigin.position;
+            projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+
+            Projectile projectileScript = projectile.GetComponent<Projectile>();
+            if (projectileScript != null)
+            {
+                projectileScript.Initialize(projectilePool, povOrigin.forward, 75f);
+            }
         }
     }
-
-
-
 }
-
-

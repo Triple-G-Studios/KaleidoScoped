@@ -1,28 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+namespace Kaleidoscope
 {
-    public KillCounter killCounter;
-    public Timer timer;
-
-    public SceneLoader sceneLoader;
-
-    void Update()
+    public class GameManager : MonoBehaviour
     {
-        CheckGameConditions();
-    }
+        public KillCounter killCounter;
+        public Timer timer;
 
-    void CheckGameConditions()
-    {
-        if (killCounter.GetKills() >= 12)
+        public SceneLoader sceneLoader;
+
+        void Update()
         {
-            sceneLoader.VictoryScreen();
+            CheckGameConditions();
         }
 
-        if (timer.IsTimeUp())
+        void CheckGameConditions()
         {
-            sceneLoader.GameOverScreen();
+            if (killCounter.GetKills() >= 12)
+            {
+                sceneLoader.VictoryScreen();
+            }
+
+            if (timer.IsTimeUp())
+            {
+                sceneLoader.GameOverScreen();
+            }
         }
     }
 }

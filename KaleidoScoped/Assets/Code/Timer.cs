@@ -5,39 +5,42 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+namespace Kaleidoscope
 {
-    public float currTime = 0f;
-    public float startTime = 360f;
-
-    [SerializeField] Text timerText;
-
-    void Start()
+    public class Timer : MonoBehaviour
     {
-        currTime = startTime;
-    }
+        public float currTime = 0f;
+        public float startTime = 360f;
 
-    void Update()
-    {
-        currTime -= 1 * Time.deltaTime;
-        var ts = TimeSpan.FromSeconds(currTime);
-        timerText.text = string.Format("{0:00}:{1:00}", (int)ts.TotalMinutes, (int)ts.Seconds);
+        [SerializeField] Text timerText;
 
-        if (currTime < 60)
+        void Start()
         {
-            timerText.color = Color.red;
+            currTime = startTime;
         }
 
-        if (currTime <= 0)
+        void Update()
         {
-            currTime = 0;
-            SceneManager.LoadScene("GameOver");
+            currTime -= 1 * Time.deltaTime;
+            var ts = TimeSpan.FromSeconds(currTime);
+            timerText.text = string.Format("{0:00}:{1:00}", (int)ts.TotalMinutes, (int)ts.Seconds);
+
+            if (currTime < 60)
+            {
+                currTime = startTime;
+            }
+
+            if (currTime <= 0)
+            {
+                currTime = 0;
+                SceneManager.LoadScene("GameOver");
+            }
         }
-    }
 
-    public bool IsTimeUp()
-    {
-        return currTime <= 0;
-    }
+        public bool IsTimeUp()
+        {
+            return currTime <= 0;
+        }
 
+    }
 }

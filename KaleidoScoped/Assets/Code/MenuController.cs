@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+namespace Kaleidoscope
 {
-    public void loadGame() => SceneManager.LoadScene("JoeyScene");
+    public class MenuController : MonoBehaviour
+    {
+        public void loadGame() => SceneManager.LoadScene("JoeyScene");
+    }
 }

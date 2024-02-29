@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class KillZone : MonoBehaviour
+namespace Kaleidoscope
 {
-    private void OnTriggerEnter(Collider other)
+    public class KillZone : MonoBehaviour
     {
-        if (other.GetComponent<CharacterController>())
+        private void OnTriggerEnter(Collider other)
         {
-            string currentScene = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentScene);
+            if (other.GetComponent<CharacterController>())
+            {
+                string currentScene = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene(currentScene);
+            }
         }
     }
 }

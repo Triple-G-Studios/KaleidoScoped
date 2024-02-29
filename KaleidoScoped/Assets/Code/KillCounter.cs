@@ -4,46 +4,45 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class KillCounter : MonoBehaviour
+namespace Kaleidoscope
 {
-    // Outlets
-    public Text counterText;
-
-    // Tracking
-    int kills;
-
-    // Start is called before the first frame update
-    void Start()
+    public class KillCounter : MonoBehaviour
     {
-        kills = 0;
-        displayKills();
-    }
+        // Outlets
+        public Text counterText;
+        int kills;
 
-    private void displayKills()
-    {
-        if (counterText == null)
+        void Start()
         {
-            counterText = GameObject.FindWithTag("KillCounterText").GetComponent<Text>();
+            kills = 0;
+            DisplayKills();
         }
-        else
+
+        public void IncrementKills()
         {
-            counterText.text = kills.ToString();
+            kills++;
+            if (kills >= 10)
+            {
+                SceneManager.LoadScene("Victory");
+            }
+            DisplayKills();
         }
-    }
 
-    public void incrementKills()
-    {
-        kills++;
-        if(kills >= 10)
+        public int GetKills()
         {
-            SceneManager.LoadScene("Victory");
+            return kills;
         }
-        displayKills();
-    }
 
-    public int GetKills()
-    {
-        return kills;
+        private void DisplayKills()
+        {
+            if (counterText == null)
+            {
+                counterText = GameObject.FindWithTag("KillCounterText").GetComponent<Text>();
+            }
+            else
+            {
+                counterText.text = kills.ToString();
+            }
+        }
     }
-
 }

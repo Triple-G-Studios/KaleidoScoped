@@ -3,50 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+namespace Kaleidoscope
 {
-    // Outlets
-    public GameObject collectiblePrefab;
-
-    //NavMeshAgent navAgent;
-    Animator animator;
-
-    // Configuration
-    public Transform target;
-    //public Transform patrolRoute;
-
-    // State Tracking
-    //int patrolIndex;
-
-    KillCounter killCounter;
-
-    // Methods
-    private void Start()
+    public class Enemy : MonoBehaviour
     {
-        //navAgent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-        killCounter = GameObject.FindWithTag("KillCounter").GetComponent<KillCounter>();
-    }
+        // Outlets
+        public GameObject collectiblePrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (target)
+        //NavMeshAgent navAgent;
+        Animator animator;
+
+        // Configuration
+        public Transform target;
+        //public Transform patrolRoute;
+
+        // State Tracking
+        //int patrolIndex;
+
+        KillCounter killCounter;
+
+        // Methods
+        private void Start()
         {
-            //navAgent.SetDestination(target.position);
+            //navAgent = GetComponent<NavMeshAgent>();
+            animator = GetComponent<Animator>();
+            killCounter = GameObject.FindWithTag("KillCounter").GetComponent<KillCounter>();
         }
 
-        //animator.SetFloat("velocity", navAgent.velocity.magnitude);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Projectile"))
+        // Update is called once per frame
+        void Update()
         {
-            Destroy(collision.gameObject); // Destroy projectile
-            Destroy(gameObject); // Destroy enemy
-            killCounter.incrementKills(); // Update kills
-            Instantiate(collectiblePrefab, transform.position, Quaternion.identity); // Spawn paint collectible
+            if (target)
+            {
+                //navAgent.SetDestination(target.position);
+            }
+
+            //animator.SetFloat("velocity", navAgent.velocity.magnitude);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.CompareTag("Projectile"))
+            {
+                Destroy(collision.gameObject); // Destroy projectile
+                Destroy(gameObject); // Destroy enemy
+                killCounter.IncrementKills(); // Update kills
+                Instantiate(collectiblePrefab, transform.position, Quaternion.identity); // Spawn paint collectible
+            }
         }
     }
 }
