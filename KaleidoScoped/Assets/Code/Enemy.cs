@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Kaleidoscope
+namespace Kaleidoscoped
 {
     public class Enemy : MonoBehaviour
     {

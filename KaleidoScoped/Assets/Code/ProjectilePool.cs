@@ -5,7 +5,7 @@ using UnityEngine;
 
 //This doesn't work flawlessly like I noticed some clicks where it wouldn't shoot. 
 //It helps a ton with performance though I think cause projectiles aren't being created and destroyed every time you shoot.
-namespace Kaleidoscope
+namespace Kaleidoscoped
 {
     public class ProjectilePool : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kaleidoscope
+namespace Kaleidoscoped
 {
     public class SwapPaint : MonoBehaviour
     {

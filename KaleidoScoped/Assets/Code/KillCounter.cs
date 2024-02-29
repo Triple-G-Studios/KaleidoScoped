@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Kaleidoscope
+namespace Kaleidoscoped
 {
     public class KillCounter : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Kaleidoscope
+namespace Kaleidoscoped
 {
     public class GameManager : MonoBehaviour
     {

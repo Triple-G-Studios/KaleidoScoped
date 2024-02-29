@@ -1,27 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+namespace Kaleidoscoped
 {
-    public void ReloadGame()
+    public class SceneLoader : MonoBehaviour
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        public void ReloadGame()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
-        SceneManager.LoadScene("JoeyScene");
-    }
+            SceneManager.LoadScene("JoeyScene");
+        }
 
-    public void VictoryScreen()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        SceneManager.LoadScene("Victory");
-    }
+        public void VictoryScreen()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("Victory");
+        }
 
-    public void GameOverScreen()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        SceneManager.LoadScene("GameOver");
+        public void GameOverScreen()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

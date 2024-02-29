@@ -3,39 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Took from our previous semester project
-public class VolumeManager : MonoBehaviour
+namespace Kaleidoscoped
 {
-    [SerializeField] Slider volumeSlider;
-
-    void Start()
+    // Took from our previous semester project
+    public class VolumeManager : MonoBehaviour
     {
-        if (!PlayerPrefs.HasKey("musicVolume"))
+        [SerializeField] Slider volumeSlider;
+
+        void Start()
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
-            Load();
+            if (!PlayerPrefs.HasKey("musicVolume"))
+            {
+                PlayerPrefs.SetFloat("musicVolume", 1);
+                Load();
+            }
+
+            else
+            {
+                Load();
+            }
         }
 
-        else
+        public void ChangeVolume()
         {
-            Load();
+            AudioListener.volume = volumeSlider.value;
+            Save();
         }
-    }
 
-    public void ChangeVolume()
-    {
-        AudioListener.volume = volumeSlider.value;
-        Save();
-    }
+        private void Load()
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        }
 
-    private void Load()
-    {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
-    }
-
-    private void Save()
-    {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+        private void Save()
+        {
+            PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+        }
     }
 }
-

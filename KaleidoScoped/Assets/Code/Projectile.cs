@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Kaleidoscope
+namespace Kaleidoscoped
 {
     public class Projectile : MonoBehaviour
     {
