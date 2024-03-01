@@ -33,7 +33,7 @@ namespace Kaleidoscoped
                 else if (color == "blue")
                 {
                     targetPlayer.MoveSpeed = 8f;
-                    targetPlayer.SprintSpeed = 8f;
+                    targetPlayer.SprintSpeed = 10f;
                 }
 
                 else if (color == "green")
@@ -50,7 +50,7 @@ namespace Kaleidoscoped
                 else
                 {
                     targetPlayer.MoveSpeed = 4f;
-                    targetPlayer.SprintSpeed = 4f;
+                    targetPlayer.SprintSpeed = 6f;
                     targetPlayer.JumpHeight = 1.2f;
                 }
             }
@@ -66,7 +66,7 @@ namespace Kaleidoscoped
                 color = other.GetComponent<PlayerController>().currentColor;
 
                 targetPlayer.MoveSpeed = 4f;
-                targetPlayer.SprintSpeed = 4f;
+                targetPlayer.SprintSpeed = 6f;
                 targetPlayer.JumpHeight = 1.2f;
             }
         }
