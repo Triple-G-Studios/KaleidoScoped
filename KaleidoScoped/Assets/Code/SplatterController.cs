@@ -27,24 +27,31 @@ namespace Kaleidoscoped
 
                 if (color == "purple")
                 {
-                    targetPlayer.JumpHeight *= 2;
+                    targetPlayer.JumpHeight = 2.4f;
                 }
 
                 else if (color == "blue")
                 {
-                    targetPlayer.MoveSpeed *= 2;
-                    targetPlayer.SprintSpeed *= 2;
+                    targetPlayer.MoveSpeed = 8f;
+                    targetPlayer.SprintSpeed = 8f;
                 }
 
                 else if (color == "green")
                 {
-                    targetPlayer.MoveSpeed /= 2;
-                    targetPlayer.SprintSpeed /= 2;
+                    targetPlayer.MoveSpeed = 2f;
+                    targetPlayer.SprintSpeed = 2f;
                 }
 
                 else if (color == "red")
                 {
-                    targetPlayer.JumpHeight = 0;
+                    targetPlayer.JumpHeight = 0f;
+                } 
+
+                else
+                {
+                    targetPlayer.MoveSpeed = 4f;
+                    targetPlayer.SprintSpeed = 4f;
+                    targetPlayer.JumpHeight = 1.2f;
                 }
             }
         }
@@ -58,27 +65,9 @@ namespace Kaleidoscoped
                 //if it has a first person controller, it has a playercontroller
                 color = other.GetComponent<PlayerController>().currentColor;
 
-                if (color == "purple")
-                {
-                    targetPlayer.JumpHeight /= 2;
-                }
-
-                else if (color == "blue")
-                {
-                    targetPlayer.MoveSpeed /= 2;
-                    targetPlayer.SprintSpeed /= 2;
-                }
-
-                else if (color == "green")
-                {
-                    targetPlayer.MoveSpeed *= 2;
-                    targetPlayer.SprintSpeed *= 2;
-                }
-
-                else if (color == "red")
-                {
-                    targetPlayer.JumpHeight = 1.2f;
-                }
+                targetPlayer.MoveSpeed = 4f;
+                targetPlayer.SprintSpeed = 4f;
+                targetPlayer.JumpHeight = 1.2f;
             }
         }
     }
