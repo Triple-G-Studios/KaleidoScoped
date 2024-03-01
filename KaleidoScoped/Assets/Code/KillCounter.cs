@@ -21,10 +21,10 @@ namespace Kaleidoscoped
         public void IncrementKills()
         {
             kills++;
-            if (kills >= 10)
+            /*if (kills >= 10)
             {
                 SceneManager.LoadScene("Victory");
-            }
+            }*/
             DisplayKills();
         }
 

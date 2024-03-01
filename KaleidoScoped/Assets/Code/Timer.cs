@@ -33,7 +33,7 @@ namespace Kaleidoscoped
             if (currTime <= 0)
             {
                 currTime = 0;
-                SceneManager.LoadScene("GameOver");
+                // SceneManager.LoadScene("GameOver");
             }
         }
 
