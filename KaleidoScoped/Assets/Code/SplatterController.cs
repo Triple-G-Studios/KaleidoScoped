@@ -15,7 +15,7 @@ namespace Kaleidoscoped
             instance = this;
         }
 
-        void OnTriggerEnter(Collider other)
+        void OnTriggerStay(Collider other)
         {
             FirstPersonController targetPlayer = other.GetComponent<FirstPersonController>();
 
