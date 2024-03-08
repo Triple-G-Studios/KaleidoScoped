@@ -42,7 +42,7 @@ namespace Kaleidoscoped
 
         void Update()
         {
-            GameObject popup = PopUpController.GetComponent<popupmenu>(;
+            // GameObject popup = PopUpController.GetComponent<popupmenu>(); 
             if (Keyboard.current.escapeKey.wasPressedThisFrame)
             {
                 if (isPaused)
