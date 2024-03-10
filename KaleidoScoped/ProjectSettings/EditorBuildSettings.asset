@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 28a6facf877921a4ebc74a2a57740962
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JoeyScene.unity
     guid: fe96c983f11224e479d74c06944a4167
   - enabled: 1
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 4b47638a46cd4415f86ae46f0e66169c
+  - enabled: 1
+    path: Assets/Scenes/LukeScene.unity
+    guid: 02aac113b411edc4483053b1b8937b86
   m_configObjects: {}
