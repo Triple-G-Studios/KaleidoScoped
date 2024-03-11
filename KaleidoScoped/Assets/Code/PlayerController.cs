@@ -22,6 +22,7 @@ namespace Kaleidoscoped
         // State Tracking
         public List<string> keyIdsObtained;
         public string currentColor = "";
+        public Color color = Color.blue;
 
         public GameObject pauseMenuUI;
 
@@ -126,7 +127,7 @@ namespace Kaleidoscoped
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             if (projectileScript != null)
             {
-                projectileScript.Initialize(projectilePool, povOrigin.forward, 75f);
+                projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
             }
         }
     }

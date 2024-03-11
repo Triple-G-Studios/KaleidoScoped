@@ -23,7 +23,7 @@ namespace Kaleidoscoped
             {
                 print("with player");
                 //if it has a first person controller, it has a playercontroller
-                color = other.GetComponent<PlayerController>().currentColor;
+                //color = other.GetComponent<PlayerController>().currentColor;
 
                 if (color == "purple")
                 {
@@ -63,7 +63,6 @@ namespace Kaleidoscoped
             if (targetPlayer != null)
             {
                 //if it has a first person controller, it has a playercontroller
-                color = other.GetComponent<PlayerController>().currentColor;
 
                 targetPlayer.MoveSpeed = 4f;
                 targetPlayer.SprintSpeed = 6f;

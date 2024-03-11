@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEditor;
 
 namespace Kaleidoscoped
 {
@@ -9,10 +10,14 @@ namespace Kaleidoscoped
         [SerializeField] private float lifetime = 5f;
         [SerializeField] private GameObject paintSplatPrefab;
         private ProjectilePool pool;
+        private Color splatterColor;
+        private string cString;
 
-        public void Initialize(ProjectilePool projectilePool, Vector3 direction, float force)
+        public void Initialize(ProjectilePool projectilePool, Vector3 direction, float force, Color splatColor, string colorString)
         {
             pool = projectilePool;
+            splatterColor = splatColor;
+            cString = colorString;
 
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
@@ -36,8 +41,11 @@ namespace Kaleidoscoped
 
                 Vector3 position = contact.point + contact.normal * 0.01f;
 
-                Instantiate(paintSplatPrefab, position, rotation);
-
+                GameObject splat = Instantiate(paintSplatPrefab, position, rotation);
+                Renderer splatRender = splat.GetComponent<Renderer>();
+                splatRender.material.color = splatterColor;
+                SplatterController splatter = splat.GetComponent<SplatterController>();
+                if (splatter != null) splatter.color = cString;
                 //BUG I noticed a bug where you can shoot another paint splatter and it makes like infinite paint splatters on top of eachother. 
                 //BUG Since the paint splatter is raised a little bit you can shoot a bunch of them and they stack on top of eachother.
                 //BUG If you run and or jump while shooting the player like contacts the projectile and it like applies a force ...weird stuff happens.

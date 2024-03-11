@@ -40,9 +40,10 @@ namespace Kaleidoscoped
                         break;
                 }
 
-                var splatterRenderer = splatterPrefab.GetComponent<Renderer>();
+                targetPlayer.color = paintColor;
+                //var splatterRenderer = splatterPrefab.GetComponent<Renderer>();
                 var paintballRenderer = paintballPrefab.GetComponent<Renderer>();
-                splatterRenderer.sharedMaterial.SetColor("_Color", paintColor); // Set splatter color
+                //splatterRenderer.sharedMaterial.SetColor("_Color", paintColor); // Set splatter color
                 paintballRenderer.sharedMaterial.SetColor("_Color", paintColor); // Set paintball color
 
                 Destroy(gameObject);
