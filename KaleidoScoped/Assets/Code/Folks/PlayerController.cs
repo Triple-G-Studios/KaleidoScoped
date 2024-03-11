@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+// using Mirror;
 
 namespace Kaleidoscoped
 {
-    public class PlayerController : NetworkBehaviour
+    public class PlayerController : MonoBehaviour
     {
         public static PlayerController instance;
 
@@ -40,10 +40,10 @@ namespace Kaleidoscoped
 
         void Awake()
         {
-            if (!isLocalPlayer)
+            /*if (!isLocalPlayer)
             {
                 return;
-            }
+            }*/
             instance = this;
             keyIdsObtained = new List<string>();
             pauseMenuUI.SetActive(false);
@@ -54,7 +54,7 @@ namespace Kaleidoscoped
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            if (!isLocalPlayer)
+            /*if (!isLocalPlayer)
             {
                 playerCamera.SetActive(false);
                 PlayerFollowCamera.SetActive(true);
@@ -65,14 +65,14 @@ namespace Kaleidoscoped
                 Player.GetComponent<PlayerController>().enabled = false;
                 // Player.GetComponent<FirstPersonController>().enabled = false;
                 Player.GetComponent<CharacterController>().enabled = false;
-            }
+            }*/
         }
 
 
 
         void Update()
         {
-            if (!isLocalPlayer)
+            /*if (!isLocalPlayer)
             {
                 playerCamera.SetActive(false);
                 PlayerFollowCamera.SetActive(false);
@@ -84,7 +84,7 @@ namespace Kaleidoscoped
                 // Player.GetComponent<FirstPersonController>().enabled = false;
                 Player.GetComponent<CharacterController>().enabled = false;
                 return;
-            }
+            }*/
             // GameObject popup = PopUpController.GetComponent<popupmenu>(); 
 
             if (Input.GetKeyDown(KeyCode.Escape))
