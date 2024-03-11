@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Mirror;
 
 namespace Kaleidoscoped
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : NetworkBehaviour
     {
         public static PlayerController instance;
 
@@ -31,14 +32,40 @@ namespace Kaleidoscoped
 
         private InputActionMap playerActionMap;
 
+        public GameObject playerCamera;
+        public GameObject PlayerFollowCamera;
+        public GameObject canvas;
+        public GameObject CameraRoot;
+
 
         void Awake()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
             instance = this;
             keyIdsObtained = new List<string>();
             playerActionMap = actionAsset.FindActionMap("Player", true);
             pauseMenuUI.SetActive(false);
         }
+
+        void Start()
+        {
+            playerActionMap.Enable();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            if (!isLocalPlayer)
+            {
+                playerCamera.SetActive(false);
+                PlayerFollowCamera.SetActive(true);
+                canvas.SetActive(false);
+                CameraRoot.SetActive(false);
+            }
+        }
+
+
 
         void Update()
         {
