@@ -7,6 +7,6 @@ namespace Kaleidoscoped
 {
     public class MenuController : MonoBehaviour
     {
-        public void loadGame() => SceneManager.LoadScene("JoeyScene");
+        public void loadGame() => SceneManager.LoadScene("LobbyLanding");
     }
 }
