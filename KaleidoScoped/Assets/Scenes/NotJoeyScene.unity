@@ -5684,6 +5684,10 @@ MonoBehaviour:
   currentColor: blue
   pauseMenuUI: {fileID: 3696748044217742368}
   actionAsset: {fileID: -944628639613478452, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+  playerCamera: {fileID: 0}
+  PlayerFollowCamera: {fileID: 0}
+  canvas: {fileID: 0}
+  CameraRoot: {fileID: 0}
 --- !u!114 &176934666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48353,6 +48357,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df6b1a6684ecd764ba9bb40fa33d2f00, type: 3}
+--- !u!1001 &1680931429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5132225639387184343, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_Name
+      value: MainCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.3687797
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.10000229
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.2175903
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782330744862698679, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3cdffc12d5214b78bca6789878967a3, type: 3}
 --- !u!1 &1687811415
 GameObject:
   m_ObjectHideFlags: 0
@@ -62475,6 +62536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_EventSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 1992104595683069851, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8063073397250431797, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -63300,6 +63365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFollowCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395322, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -63446,6 +63515,10 @@ PrefabInstance:
     - target: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
       propertyPath: m_Name
       value: MainCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005220659476430823, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -63625,6 +63698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCapsule
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -63799,3 +63876,4 @@ SceneRoots:
   - {fileID: 6674872002555406005}
   - {fileID: 4990091010416724859}
   - {fileID: 1568067597}
+  - {fileID: 1680931429}
