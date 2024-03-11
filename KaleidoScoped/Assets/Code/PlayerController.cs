@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Mirror;
-using Unity.VisualScripting;
-using StarterAssets;
 
 namespace Kaleidoscoped
 {
@@ -26,15 +23,12 @@ namespace Kaleidoscoped
         public List<string> keyIdsObtained;
         public string currentColor = "";
         public Color color = Color.blue;
-        public string weapon = "shotgun";
+        public string weapon = "rifle";
 
         public GameObject pauseMenuUI;
 
         private bool isPaused = false;
 
-        public InputActionAsset actionAsset;
-
-        private InputActionMap playerActionMap;
 
         public GameObject playerCamera;
         public GameObject PlayerFollowCamera;
@@ -46,19 +40,17 @@ namespace Kaleidoscoped
 
         void Awake()
         {
-            //if (!isLocalPlayer)
-            //{
-            //    return;
-            //}
+            if (!isLocalPlayer)
+            {
+                return;
+            }
             instance = this;
             keyIdsObtained = new List<string>();
-            playerActionMap = actionAsset.FindActionMap("Player", true);
             pauseMenuUI.SetActive(false);
         }
 
         void Start()
         {
-            playerActionMap.Enable();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
@@ -68,6 +60,11 @@ namespace Kaleidoscoped
                 PlayerFollowCamera.SetActive(true);
                 canvas.SetActive(false);
                 CameraRoot.SetActive(false);
+                EventSystem.SetActive(false);
+                // Player.GetComponent<PlayerInput>().enabled = false;
+                Player.GetComponent<PlayerController>().enabled = false;
+                // Player.GetComponent<FirstPersonController>().enabled = false;
+                Player.GetComponent<CharacterController>().enabled = false;
             }
         }
 
@@ -82,15 +79,15 @@ namespace Kaleidoscoped
                 canvas.SetActive(false);
                 CameraRoot.SetActive(false);
                 EventSystem.SetActive(false);
-                Player.GetComponent<PlayerInput>().enabled = false;
+                // Player.GetComponent<PlayerInput>().enabled = false;
                 Player.GetComponent<PlayerController>().enabled = false;
-                Player.GetComponent<FirstPersonController>().enabled = false;
+                // Player.GetComponent<FirstPersonController>().enabled = false;
                 Player.GetComponent<CharacterController>().enabled = false;
-                Player.GetComponent<StarterAssetsInputs>().enabled = false;
                 return;
             }
             // GameObject popup = PopUpController.GetComponent<popupmenu>(); 
-            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (isPaused)
                 {
@@ -120,7 +117,6 @@ namespace Kaleidoscoped
             Time.timeScale = 0f;
             isPaused = true;
 
-            playerActionMap.Disable();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -131,7 +127,6 @@ namespace Kaleidoscoped
             Time.timeScale = 1f;
             isPaused = false;
 
-            playerActionMap.Enable();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -217,7 +212,7 @@ namespace Kaleidoscoped
 
                 if (projectileScript != null) projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
             }
-            
+
         }
     }
 }
