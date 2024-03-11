@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-//using Mirror;
+using Mirror;
+using Unity.VisualScripting;
+using StarterAssets;
 
 namespace Kaleidoscoped
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : NetworkBehaviour
     {
         public static PlayerController instance;
 
@@ -37,6 +39,8 @@ namespace Kaleidoscoped
         public GameObject PlayerFollowCamera;
         public GameObject canvas;
         public GameObject CameraRoot;
+        public GameObject EventSystem;
+        public GameObject Player;
 
 
         void Awake()
@@ -51,24 +55,39 @@ namespace Kaleidoscoped
             pauseMenuUI.SetActive(false);
         }
 
-        //void Start()
-        //{
-        //    playerActionMap.Enable();
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //    Cursor.visible = false;
+        void Start()
+        {
+            playerActionMap.Enable();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
-        //    if (!isLocalPlayer)
-        //    {
-        //        playerCamera.SetActive(false);
-        //        PlayerFollowCamera.SetActive(true);
-        //        canvas.SetActive(false);
-        //        CameraRoot.SetActive(false);
-        //    }
-        //}
+            if (!isLocalPlayer)
+            {
+                playerCamera.SetActive(false);
+                PlayerFollowCamera.SetActive(true);
+                canvas.SetActive(false);
+                CameraRoot.SetActive(false);
+            }
+        }
+
 
 
         void Update()
         {
+            if (!isLocalPlayer)
+            {
+                playerCamera.SetActive(false);
+                PlayerFollowCamera.SetActive(false);
+                canvas.SetActive(false);
+                CameraRoot.SetActive(false);
+                EventSystem.SetActive(false);
+                Player.GetComponent<PlayerInput>().enabled = false;
+                Player.GetComponent<PlayerController>().enabled = false;
+                Player.GetComponent<FirstPersonController>().enabled = false;
+                Player.GetComponent<CharacterController>().enabled = false;
+                Player.GetComponent<StarterAssetsInputs>().enabled = false;
+                return;
+            }
             // GameObject popup = PopUpController.GetComponent<popupmenu>(); 
             if (Keyboard.current.escapeKey.wasPressedThisFrame)
             {
@@ -80,6 +99,17 @@ namespace Kaleidoscoped
                 {
                     PauseGame();
                 }
+            }
+
+            float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * 110.0f;
+            float moveZ = Input.GetAxis("Vertical") * Time.deltaTime * 4f;
+
+            transform.Rotate(0, moveX, 0);
+            transform.Translate(0, 0, moveZ);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnPrimaryAttack();
             }
         }
 
@@ -146,6 +176,11 @@ namespace Kaleidoscoped
         // I swapped these to make shooting on left click
         void OnPrimaryAttack()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+
             GameObject projectile = projectilePool.GetProjectile();
             projectile.transform.position = projectileOrigin.position;
             projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
