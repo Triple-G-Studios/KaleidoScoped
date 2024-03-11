@@ -24,6 +24,7 @@ namespace Kaleidoscoped
         public List<string> keyIdsObtained;
         public string currentColor = "";
         public Color color = Color.blue;
+        public string weapon = "shotgun";
 
         public GameObject pauseMenuUI;
 
@@ -147,15 +148,42 @@ namespace Kaleidoscoped
         // I swapped these to make shooting on left click
         void OnPrimaryAttack()
         {
-            GameObject projectile = projectilePool.GetProjectile();
-            projectile.transform.position = projectileOrigin.position;
-            projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
-
-            Projectile projectileScript = projectile.GetComponent<Projectile>();
-            if (projectileScript != null)
+            if (weapon == "shotgun")
             {
-                projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
+                GameObject projectile1 = projectilePool.GetProjectile();
+                projectile1.transform.position = projectileOrigin.position;
+                projectile1.transform.rotation = Quaternion.LookRotation(povOrigin.forward) * Quaternion.Euler(Vector3.forward * 10);
+
+                GameObject projectile2 = projectilePool.GetProjectile();
+                projectile2.transform.position = projectileOrigin.position;
+                projectile2.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+
+                GameObject projectile3 = projectilePool.GetProjectile();
+                projectile3.transform.position = projectileOrigin.position;
+                projectile3.transform.rotation = Quaternion.LookRotation(povOrigin.forward) * Quaternion.Euler(Vector3.forward * -10);
+
+                Projectile projectileScript1 = projectile1.GetComponent<Projectile>();
+                Projectile projectileScript2 = projectile2.GetComponent<Projectile>();
+                Projectile projectileScript3 = projectile3.GetComponent<Projectile>();
+
+                if (projectileScript1 != null && projectileScript2 != null && projectileScript3 != null)
+                {
+                    projectileScript1.Initialize(projectilePool, Quaternion.AngleAxis(10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
+                    projectileScript2.Initialize(projectilePool, povOrigin.forward, 15f, color, currentColor);
+                    projectileScript3.Initialize(projectilePool, Quaternion.AngleAxis(-10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
+                }
             }
+            if (weapon == "rifle")
+            {
+                GameObject projectile = projectilePool.GetProjectile();
+                projectile.transform.position = projectileOrigin.position;
+                projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+
+                Projectile projectileScript = projectile.GetComponent<Projectile>();
+
+                if (projectileScript != null) projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
+            }
+            
         }
     }
 }

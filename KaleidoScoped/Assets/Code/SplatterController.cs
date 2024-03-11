@@ -21,7 +21,6 @@ namespace Kaleidoscoped
 
             if (targetPlayer != null)
             {
-                print("with player");
                 //if it has a first person controller, it has a playercontroller
                 //color = other.GetComponent<PlayerController>().currentColor;
 

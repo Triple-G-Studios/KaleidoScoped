@@ -21,5 +21,3 @@ EditorBuildSettings:
     path: Assets/Scenes/LukeScene.unity
     guid: 02aac113b411edc4483053b1b8937b86
   m_configObjects: {}
-  m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6248523142282649082}
   - component: {fileID: 4374368349684686509}
   - component: {fileID: -3089314506569905268}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Paintball
   m_TagString: Projectile
   m_Icon: {fileID: 0}
