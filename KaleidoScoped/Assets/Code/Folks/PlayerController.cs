@@ -172,10 +172,10 @@ namespace Kaleidoscoped
         // I swapped these to make shooting on left click
         void OnPrimaryAttack()
         {
-            if (!isLocalPlayer)
+            /*if (!isLocalPlayer)
             {
                 return;
-            }
+            }*/
 
             if (weapon == "shotgun")
             {
