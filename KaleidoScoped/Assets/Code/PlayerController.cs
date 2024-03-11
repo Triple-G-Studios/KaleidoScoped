@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Mirror;
+using Unity.VisualScripting;
+using StarterAssets;
 
 namespace Kaleidoscoped
 {
@@ -38,14 +40,16 @@ namespace Kaleidoscoped
         public GameObject PlayerFollowCamera;
         public GameObject canvas;
         public GameObject CameraRoot;
+        public GameObject EventSystem;
+        public GameObject Player;
 
 
         void Awake()
         {
-            if (!isLocalPlayer)
-            {
-                return;
-            }
+            //if (!isLocalPlayer)
+            //{
+            //    return;
+            //}
             instance = this;
             keyIdsObtained = new List<string>();
             playerActionMap = actionAsset.FindActionMap("Player", true);
@@ -71,6 +75,20 @@ namespace Kaleidoscoped
 
         void Update()
         {
+            if (!isLocalPlayer)
+            {
+                playerCamera.SetActive(false);
+                PlayerFollowCamera.SetActive(false);
+                canvas.SetActive(false);
+                CameraRoot.SetActive(false);
+                EventSystem.SetActive(false);
+                Player.GetComponent<PlayerInput>().enabled = false;
+                Player.GetComponent<PlayerController>().enabled = false;
+                Player.GetComponent<FirstPersonController>().enabled = false;
+                Player.GetComponent<CharacterController>().enabled = false;
+                Player.GetComponent<StarterAssetsInputs>().enabled = false;
+                return;
+            }
             // GameObject popup = PopUpController.GetComponent<popupmenu>(); 
             if (Keyboard.current.escapeKey.wasPressedThisFrame)
             {
@@ -82,6 +100,17 @@ namespace Kaleidoscoped
                 {
                     PauseGame();
                 }
+            }
+
+            float moveX = Input.GetAxis("Horizontal") * Time.deltaTime * 110.0f;
+            float moveZ = Input.GetAxis("Vertical") * Time.deltaTime * 4f;
+
+            transform.Rotate(0, moveX, 0);
+            transform.Translate(0, 0, moveZ);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnPrimaryAttack();
             }
         }
 
@@ -148,6 +177,11 @@ namespace Kaleidoscoped
         // I swapped these to make shooting on left click
         void OnPrimaryAttack()
         {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+
             if (weapon == "shotgun")
             {
                 GameObject projectile1 = projectilePool.GetProjectile();
