@@ -18,7 +18,7 @@ namespace Kaleidoscoped
 
         public void playPressed()
         {
-            SceneManager.LoadScene("NotJoeyScene");
+            SceneManager.LoadScene("JoeyScene");
         }
 
         public void riflePress()
