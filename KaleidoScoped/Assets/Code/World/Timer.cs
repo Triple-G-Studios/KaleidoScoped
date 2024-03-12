@@ -23,7 +23,7 @@ namespace Kaleidoscoped
         {
             currTime -= 1 * Time.deltaTime;
             var ts = TimeSpan.FromSeconds(currTime);
-            timerText.text = string.Format("{0:00}:{1:00}", (int)ts.TotalMinutes, (int)ts.Seconds);
+            // timerText.text = string.Format("{0:00}:{1:00}", (int)ts.TotalMinutes, (int)ts.Seconds);
 
             if (currTime < 60)
             {

@@ -762,8 +762,8 @@ MonoBehaviour:
   keyIdsObtained: []
   currentColor: blue
   color: {r: 0, g: 0, b: 1, a: 1}
+  weapon: rifle
   pauseMenuUI: {fileID: 0}
-  actionAsset: {fileID: 0}
   playerCamera: {fileID: 9118869809852703028}
   PlayerFollowCamera: {fileID: 8388859098720325502}
   canvas: {fileID: 8882295542381497522}
