@@ -23,7 +23,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LukeScene.unity
     guid: 02aac113b411edc4483053b1b8937b86
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Land.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/JoeyScene 1.unity
+    guid: b9199d9e6141f4cd8b96556927421c88
   m_configObjects: {}

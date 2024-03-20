@@ -3,6 +3,7 @@ using Mirror;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using Kaleidoscoped;
 #endif
 
 namespace StarterAssets
@@ -76,6 +77,17 @@ namespace StarterAssets
 
         private const float _threshold = 0.01f;
 
+        // NEW STUFF
+
+        public Transform povOrigin;
+        public Transform projectileOrigin;
+        public GameObject projectilePrefab;
+
+        // public ProjectilePool projectilePool;
+
+        public string currentColor = "";
+        public Color color = Color.blue;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -100,6 +112,8 @@ namespace StarterAssets
         public override void OnStartLocalPlayer()
         {
             GameObject.FindGameObjectWithTag("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = transform.GetChild(0).transform;
+            transform.GetComponent<LukePlayerMovement>().povOrigin = GameObject.FindGameObjectWithTag("PovOrigin").transform;
+            //TODO: set projectile origin & and any other stuff that needs to be set
         }
 
         public override void OnStartAuthority()
@@ -216,6 +230,19 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+        }
+
+        private void OnPrimaryAttack()
+        {
+            // GameObject projectile = projectilePool.GetProjectile();
+            // projectile.transform.position = projectileOrigin.position;
+            // projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+
+            // Projectile projectileScript = projectile.GetComponent<Projectile>();
+            // if (projectileScript != null)
+            // {
+            //     projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
+            // }
         }
 
         private void JumpAndGravity()
