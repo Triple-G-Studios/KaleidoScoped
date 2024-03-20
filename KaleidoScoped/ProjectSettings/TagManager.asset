@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - KillCounter
   - KillCounterText
+  - PlayerFollowCamera
   layers:
   - Default
   - TransparentFX
