@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace Kaleidoscoped
 {
-    // Took from our previous semester project
     public class SensitivityManager : MonoBehaviour
     {
         [SerializeField] Slider sensitivitySlider;
@@ -14,7 +13,7 @@ namespace Kaleidoscoped
         {
             if (!PlayerPrefs.HasKey("mouseSensitivity"))
             {
-                PlayerPrefs.SetFloat("mouseSensitivity", 1);
+                PlayerPrefs.SetFloat("mouseSensitivity", 300f);
                 Load();
             }
 
@@ -26,18 +25,21 @@ namespace Kaleidoscoped
 
         public void ChangeSensitivity()
         {
-            FPSController.mouseSensitivity = sensitivitySlider.value;
+            FPSController.mouseSensitivity = sensitivitySlider.value * 300f;
+            Debug.Log("Hello " + sensitivitySlider.value);
             Save();
         }
 
         private void Load()
         {
+            Debug.Log("Hello " + sensitivitySlider.value);
+
             sensitivitySlider.value = PlayerPrefs.GetFloat("mouseSensitivity");
         }
 
         private void Save()
         {
-            PlayerPrefs.SetFloat("mouseSensitivity", sensitivitySlider.value);
+            PlayerPrefs.SetFloat("mouseSensitivity", sensitivitySlider.value * 300f);
         }
     }
 }

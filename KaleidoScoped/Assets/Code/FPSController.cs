@@ -10,12 +10,11 @@ namespace Kaleidoscoped
 
 		[SerializeField] private float UpperLimit = -40f;
 		[SerializeField] private float BottomLimit = 70f;
-		public static float mouseSensitivity = 21.9f;
+		public static float mouseSensitivity = 300f;
 		[SerializeField] private float AnimBlendSpeed = 8.9f;
 
 		private float _xRotation;
 		private bool _hasAnimator;
-		private bool isPaused;
 		private const float _walkSpeed = 2f;
         private const float _runSpeed = 5f;
         private Vector2 _currVelocity;
@@ -61,7 +60,7 @@ namespace Kaleidoscoped
 
 		private void CamMovements()
 		{
-			if (!_hasAnimator || isPaused) return;
+			if (!_hasAnimator) return;
 
 			var xMouse = _input.Look.x;
 			var yMouse = _input.Look.y;

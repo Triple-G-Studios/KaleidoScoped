@@ -9,7 +9,7 @@ namespace Kaleidoscoped
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<CharacterController>())
+            if (other.GetComponent<FPSController>())
             {
                 string currentScene = SceneManager.GetActiveScene().name;
                 SceneManager.LoadScene(currentScene);
