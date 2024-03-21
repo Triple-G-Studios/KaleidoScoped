@@ -13,6 +13,7 @@ TagManager:
   - PovOrigin
   - ProjectileOrigin
   - ProjectilePool
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

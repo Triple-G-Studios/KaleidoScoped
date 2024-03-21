@@ -85,8 +85,13 @@ namespace StarterAssets
 
         public ProjectilePool projectilePool;
 
-        public string currentColor = "";
+        public string currentColor = "blue";
         public Color color = Color.blue;
+
+        public string weapon = "rifle";
+
+        public GameObject pauseMenuUI;
+        public GameObject pauseMenuPrefab;
 
         private bool IsCurrentDeviceMouse
         {
@@ -115,6 +120,9 @@ namespace StarterAssets
             transform.GetComponent<LukePlayerMovement>().povOrigin = GameObject.FindGameObjectWithTag("PovOrigin").transform;
             transform.GetComponent<LukePlayerMovement>().projectileOrigin = GameObject.FindGameObjectWithTag("ProjectileOrigin").transform;
             transform.GetComponent<LukePlayerMovement>().projectilePool = GameObject.FindGameObjectWithTag("ProjectilePool").GetComponent<ProjectilePool>();
+            // transform.GetComponent<LukePlayerMovement>().pauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu");
+            GameObject pauseMenu = Instantiate(pauseMenuPrefab);
+            transform.GetComponent<LukePlayerMovement>().pauseMenuUI = pauseMenu;
         }
 
         public override void OnStartAuthority()
