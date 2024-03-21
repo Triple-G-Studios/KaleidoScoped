@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Kaleidoscoped
 {
-    public class MenuController : MonoBehaviour
+    public class MainMenuController : MonoBehaviour
     {
         public void loadGame() => SceneManager.LoadScene("LobbyLanding");
     }

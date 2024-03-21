@@ -1483,6 +1483,7 @@ GameObject:
   - component: {fileID: 2812377827954175687}
   - component: {fileID: 8591374753498256304}
   - component: {fileID: 2381309164020993121}
+  - component: {fileID: 6485579954797820346}
   m_Layer: 8
   m_Name: MainCharacter
   m_TagString: Player
@@ -1671,6 +1672,16 @@ MonoBehaviour:
   UpperLimit: -40
   BottomLimit: 70
   MouseSensitivity: 21.9
+  projectileOrigin: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  projectilePool: {fileID: 0}
+  pauseMenuUI: {fileID: 0}
+  canvas: {fileID: 0}
+  attackRange: 0
+  keyIdsObtained: []
+  currentColor: 
+  color: {r: 0, g: 0, b: 1, a: 1}
+  weapon: rifle
 --- !u!114 &2381309164020993121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1694,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327d34dd7b1664ec7a84b1618259b73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerInput: {fileID: 600038067004427784}
+  Move: {x: 0, y: 0}
+  Look: {x: 0, y: 0}
+  Run: 0
+  Jump: 0
+  analogMovement: 0
+  cursorLocked: 1
+  cursorInputForLook: 1
+--- !u!114 &6485579954797820346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5132225639387184343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1999f55204474d45a4c8c39dadf577b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 4
+  SprintSpeed: 6
+  RotationSpeed: 1
+  SpeedChangeRate: 10
+  JumpHeight: 1.2
+  Gravity: -15
+  JumpTimeout: 0.1
+  FallTimeout: 0.15
+  Grounded: 1
+  GroundedOffset: -0.14
+  GroundedRadius: 0.5
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  CinemachineCameraTarget: {fileID: 0}
+  TopClamp: 90
+  BottomClamp: -90
+  CameraRoot: {fileID: 0}
+  Camera: {fileID: 0}
+  UpperLimit: -40
+  BottomLimit: 70
+  MouseSensitivity: 21.9
 --- !u!1 &5137495786875014712
 GameObject:
   m_ObjectHideFlags: 0
