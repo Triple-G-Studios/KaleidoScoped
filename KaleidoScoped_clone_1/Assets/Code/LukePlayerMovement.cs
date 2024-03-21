@@ -243,15 +243,47 @@ namespace StarterAssets
 
         private void OnPrimaryAttack()
         {
-            // GameObject projectile = projectilePool.GetProjectile();
-            // projectile.transform.position = projectileOrigin.position;
-            // projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+            if (!isLocalPlayer)
+            {
+                return;
+            }
 
-            // Projectile projectileScript = projectile.GetComponent<Projectile>();
-            // if (projectileScript != null)
-            // {
-            //     projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
-            // }
+            if (weapon == "shotgun")
+            {
+                GameObject projectile1 = projectilePool.GetProjectile();
+                projectile1.transform.position = projectileOrigin.position;
+                projectile1.transform.rotation = Quaternion.LookRotation(povOrigin.forward) * Quaternion.Euler(Vector3.forward * 10);
+
+                GameObject projectile2 = projectilePool.GetProjectile();
+                projectile2.transform.position = projectileOrigin.position;
+                projectile2.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+
+                GameObject projectile3 = projectilePool.GetProjectile();
+                projectile3.transform.position = projectileOrigin.position;
+                projectile3.transform.rotation = Quaternion.LookRotation(povOrigin.forward) * Quaternion.Euler(Vector3.forward * -10);
+
+                Projectile projectileScript1 = projectile1.GetComponent<Projectile>();
+                Projectile projectileScript2 = projectile2.GetComponent<Projectile>();
+                Projectile projectileScript3 = projectile3.GetComponent<Projectile>();
+
+                if (projectileScript1 != null && projectileScript2 != null && projectileScript3 != null)
+                {
+                    projectileScript1.Initialize(projectilePool, Quaternion.AngleAxis(10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
+                    projectileScript2.Initialize(projectilePool, povOrigin.forward, 15f, color, currentColor);
+                    projectileScript3.Initialize(projectilePool, Quaternion.AngleAxis(-10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
+                }
+            }
+            if (weapon == "rifle")
+            {
+                GameObject projectile = projectilePool.GetProjectile();
+                projectile.transform.position = projectileOrigin.position;
+                projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+
+                Projectile projectileScript = projectile.GetComponent<Projectile>();
+
+                if (projectileScript != null) projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
+            }
+
         }
 
         private void JumpAndGravity()
