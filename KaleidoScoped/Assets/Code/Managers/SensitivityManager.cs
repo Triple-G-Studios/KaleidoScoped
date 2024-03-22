@@ -16,7 +16,6 @@ namespace Kaleidoscoped
                 PlayerPrefs.SetFloat("mouseSensitivity", 300f);
                 Load();
             }
-
             else
             {
                 Load();
@@ -26,7 +25,6 @@ namespace Kaleidoscoped
         public void ChangeSensitivity()
         {
             FPSController.mouseSensitivity = sensitivitySlider.value * 300f;
-            Debug.Log("Hello " + sensitivitySlider.value);
             Save();
         }
 

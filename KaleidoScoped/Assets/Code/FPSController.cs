@@ -7,6 +7,16 @@ namespace Kaleidoscoped
 		[SerializeField] private Transform CameraRoot;
 		[SerializeField] private Transform Camera;
 		private Animator _animator;
+		public Transform projectileOrigin;
+		public GameObject projectilePrefab;
+		public ProjectilePool projectilePool;
+		public GameObject PaintballGun;
+		public GameObject pauseMenuUI;
+
+		//State Tracking
+		public string currentColor = "";
+		public Color color = Color.blue;
+		public string weapon = "rifle";
 
 		[SerializeField] private float UpperLimit = -40f;
 		[SerializeField] private float BottomLimit = 70f;
@@ -22,7 +32,6 @@ namespace Kaleidoscoped
         private int _yVelHash;
 
 		private Rigidbody _playerRigidbody;
-		public GameObject pauseMenuUI;
 		private InputManager _input;
 
 		private void Start()
@@ -30,9 +39,9 @@ namespace Kaleidoscoped
 			_input = GetComponent<InputManager>();
 			_playerRigidbody = GetComponent<Rigidbody>();
 			_hasAnimator = TryGetComponent<Animator>(out _animator);
-
 			_xVelHash = Animator.StringToHash("xVelocity");
 			_yVelHash = Animator.StringToHash("yVelocity");
+			pauseMenuUI.SetActive(false);
 		}
 
 		private void FixedUpdate()
@@ -90,6 +99,33 @@ namespace Kaleidoscoped
 
 			_animator.SetFloat(_xVelHash, _currVelocity.x);
 			_animator.SetFloat(_yVelHash, _currVelocity.y);
+		}
+
+		private void OnShoot()
+		{
+			//GameObject projectile = projectilePool.GetProjectile();
+			//projectile.transform.position = projectileOrigin.position;
+			//projectile.transform.rotation = Quaternion.LookRotation(CameraRoot.forward);
+
+			//Projectile projectileScript = projectile.GetComponent<Projectile>();
+			//if (projectileScript != null)
+			//{
+			//	projectileScript.Initialize(projectilePool, CameraRoot.forward, 75f, color, currentColor);
+			//}
+
+			GameObject projectile = projectilePool.GetProjectile();
+
+			Vector3 shootPosition = CameraRoot.position + CameraRoot.forward *  1;
+
+			projectile.transform.position = shootPosition;
+
+			projectile.transform.rotation = Quaternion.LookRotation(CameraRoot.forward);
+
+			Projectile projectileScript = projectile.GetComponent<Projectile>();
+			if (projectileScript != null)
+			{
+				projectileScript.Initialize(projectilePool, CameraRoot.forward, 75f, color, currentColor);
+			}
 		}
 	}
 }
