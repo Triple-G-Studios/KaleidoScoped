@@ -304,13 +304,6 @@ namespace StarterAssets
             // }
 
 
-            GameObject projectile = Instantiate(projectilePrefab, position, rotation);
-            projectile.transform.position = position;
-            projectile.transform.rotation = rotation;
-            NetworkServer.Spawn(projectile);
-
-            ProjectileNoPool projectileScript = projectile.GetComponent<ProjectileNoPool>();
-            if (projectileScript != null) projectileScript.Initialize(forward, 75f, color);
 
 
 
@@ -322,14 +315,24 @@ namespace StarterAssets
             // Projectile projectileScript = projectile.GetComponent<Projectile>();
             // if (projectileScript != null) projectileScript.Initialize(projectilePool, forward, 75f, color, currentColor);
 
-            RpcOnPrimaryAttackEffects();
+            RpcOnPrimaryAttackEffects(position, rotation, forward);
         }
 
 
         [ClientRpc]
-        void RpcOnPrimaryAttackEffects()
+        void RpcOnPrimaryAttackEffects(Vector3 position, Quaternion rotation, Vector3 forward)
         {
             // Handle sounds here I think
+            GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
+            ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
+
+            // NetworkServer.Spawn(projectileInstance);
+
+            if (projectileScript != null)
+            {
+                projectileScript.Initialize(forward, 75f, color);
+            }
+
         }
 
         private void OnPrimaryAttack()

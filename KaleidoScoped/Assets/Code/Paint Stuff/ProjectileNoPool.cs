@@ -5,7 +5,7 @@ using Mirror;
 
 namespace Kaleidoscoped
 {
-    public class ProjectileNoPool : NetworkBehaviour
+    public class ProjectileNoPool : MonoBehaviour
     {
         [SerializeField] private float lifetime = 5f;
         [SerializeField] private GameObject paintSplatPrefab;
