@@ -288,18 +288,43 @@ namespace StarterAssets
         // }
 
         [Command]
-        private void CmdOnPrimaryAttack()
+        private void CmdOnPrimaryAttack(Vector3 position, Quaternion rotation, Vector3 forward)
         {
-            GameObject projectile = projectilePool.GetProjectile();
-            projectile.transform.position = projectileOrigin.position;
-            projectile.transform.rotation = Quaternion.LookRotation(povOrigin.forward);
+            // var projectilePoolObj = NetworkServer.spawned[poolNetId].gameObject.GetComponent<ProjectilePool>();
+            // if (projectilePoolObj != null)
+            // {
+            //     var projectile = projectilePoolObj.GetProjectile();
+            //     projectile.transform.position = position;
+            //     projectile.transform.rotation = rotation;
+            //     NetworkServer.Spawn(projectile);
+            //     // Additional setup for the projectile as necessary
+
+            //     Projectile projectileScript = projectile.GetComponent<Projectile>();
+            //     if (projectileScript != null) projectileScript.Initialize(projectilePoolObj, forward, 75f, color, currentColor);
+            // }
+
+
+            GameObject projectile = Instantiate(projectilePrefab, position, rotation);
+            projectile.transform.position = position;
+            projectile.transform.rotation = rotation;
             NetworkServer.Spawn(projectile);
 
-            Projectile projectileScript = projectile.GetComponent<Projectile>();
-            if (projectileScript != null) projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
+            ProjectileNoPool projectileScript = projectile.GetComponent<ProjectileNoPool>();
+            if (projectileScript != null) projectileScript.Initialize(forward, 75f, color);
+
+
+
+            // GameObject projectile = projectilePool.GetProjectile();
+            // projectile.transform.position = position;
+            // projectile.transform.rotation = rotation;
+            // NetworkServer.Spawn(projectile);
+
+            // Projectile projectileScript = projectile.GetComponent<Projectile>();
+            // if (projectileScript != null) projectileScript.Initialize(projectilePool, forward, 75f, color, currentColor);
 
             RpcOnPrimaryAttackEffects();
         }
+
 
         [ClientRpc]
         void RpcOnPrimaryAttackEffects()
@@ -311,7 +336,9 @@ namespace StarterAssets
         {
             if (!isLocalPlayer) return;
 
-            CmdOnPrimaryAttack();
+            // var poolNetId = projectilePool.GetComponent<NetworkIdentity>().netId;
+
+            CmdOnPrimaryAttack(projectileOrigin.position, Quaternion.LookRotation(povOrigin.forward), povOrigin.forward);
         }
 
 

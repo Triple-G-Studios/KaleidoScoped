@@ -396,7 +396,7 @@ MonoBehaviour:
   BottomClamp: -90
   povOrigin: {fileID: 0}
   projectileOrigin: {fileID: 0}
-  projectilePrefab: {fileID: 3240269074512505205, guid: 97e6af6cf193341908652bce3f5e6621, type: 3}
+  projectilePrefab: {fileID: 3240269074512505205, guid: 4a9363aaa67bc4c009434b6c883a9851, type: 3}
   projectilePool: {fileID: 0}
   currentColor: 
   color: {r: 0, g: 0, b: 1, a: 1}
