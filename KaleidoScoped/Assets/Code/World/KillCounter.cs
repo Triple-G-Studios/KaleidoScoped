@@ -37,7 +37,7 @@ namespace Kaleidoscoped
         {
             if (counterText == null)
             {
-                counterText = GameObject.FindWithTag("KillCounterText").GetComponent<Text>();
+                counterText = GameObject.FindWithTag("KillCounter").GetComponent<Text>();
             }
             else
             {

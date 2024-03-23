@@ -14,6 +14,7 @@ TagManager:
   - ProjectileOrigin
   - ProjectilePool
   - PauseMenu
+  - EnemyRemaining
   layers:
   - Default
   - TransparentFX

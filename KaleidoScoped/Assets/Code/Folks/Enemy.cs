@@ -21,6 +21,7 @@ namespace Kaleidoscoped
         //int patrolIndex;
 
         KillCounter killCounter;
+        EnemyRemainingCounter enemyRemainingCounter;
 
         // Methods
         private void Start()
@@ -28,6 +29,7 @@ namespace Kaleidoscoped
             //navAgent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             killCounter = GameObject.FindWithTag("KillCounter").GetComponent<KillCounter>();
+            enemyRemainingCounter = GameObject.FindWithTag("EnemyRemaining").GetComponent<EnemyRemainingCounter>();
         }
 
         // Update is called once per frame
@@ -48,6 +50,7 @@ namespace Kaleidoscoped
                 Destroy(collision.gameObject); // Destroy projectile
                 Destroy(gameObject); // Destroy enemy
                 killCounter.IncrementKills(); // Update kills
+                enemyRemainingCounter.DecrementEnemies();
                 Instantiate(collectiblePrefab, transform.position, Quaternion.identity); // Spawn paint collectible
             }
         }

@@ -17,7 +17,7 @@ namespace Kaleidoscoped
 
         void CheckGameConditions()
         {
-            if (killCounter.GetKills() >= 10)
+            if (killCounter.GetKills() >= 12)
             {
                 sceneLoader.VictoryScreen();
             }
