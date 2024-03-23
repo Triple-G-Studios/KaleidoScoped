@@ -24,6 +24,7 @@ namespace Kaleidoscoped
         public string currentColor = "";
         public Color color = Color.blue;
         public string weapon = "rifle";
+        public int teamNumber = 0;
 
         public GameObject pauseMenuUI;
 
@@ -47,6 +48,7 @@ namespace Kaleidoscoped
             instance = this;
             keyIdsObtained = new List<string>();
             pauseMenuUI.SetActive(false);
+            loadData();
         }
 
         void Start()
@@ -213,6 +215,38 @@ namespace Kaleidoscoped
                 if (projectileScript != null) projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
             }
 
+        }
+
+        void loadData()
+        {
+            currentColor = PlayerPrefs.GetString("color");
+            weapon = PlayerPrefs.GetString("weapon");
+            teamNumber = PlayerPrefs.GetInt("team");
+
+            PlayerPrefs.DeleteAll();
+
+            switch (currentColor.ToLower())
+            {
+                case "purple":
+                    color = new Color(1f, 0f, 1f);
+                    currentColor = "purple";
+                    break;
+                case "red":
+                    color = Color.red;
+                    currentColor = "red";
+                    break;
+                case "green":
+                    color = Color.green;
+                    currentColor = "green";
+                    break;
+                case "blue":
+                    color = Color.blue;
+                    currentColor = "blue";
+                    break;
+            }
+
+            var paintballRenderer = projectilePrefab.GetComponent<Renderer>();
+            paintballRenderer.sharedMaterial.SetColor("_Color", color);
         }
     }
 }

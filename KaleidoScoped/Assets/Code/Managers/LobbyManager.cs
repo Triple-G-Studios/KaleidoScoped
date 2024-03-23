@@ -11,13 +11,18 @@ namespace Kaleidoscoped
         //state tracking
         public string weapon = "rifle";
         public string color = "blue";
+        public int team = 1;
 
         //outlets
         public TextMeshProUGUI currentWeapon;
         public TextMeshProUGUI currentColor;
+        public TextMeshProUGUI currentTeam;
 
         public void playPressed()
         {
+            PlayerPrefs.SetString("color", color);
+            PlayerPrefs.SetString("weapon", weapon);
+            PlayerPrefs.SetInt("team", team);
             SceneManager.LoadScene("JoeyScene");
         }
 
@@ -55,6 +60,18 @@ namespace Kaleidoscoped
         {
             color = "green";
             currentColor.text = "Current Color: Green";
+        }
+
+        public void t1Press()
+        {
+            team = 1;
+            currentTeam.text = "Currently Team 1";
+        }
+
+        public void t2Press()
+        {
+            team = 2;
+            currentTeam.text = "Currently Team 2";
         }
     }
 }
