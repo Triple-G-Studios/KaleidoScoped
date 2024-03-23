@@ -4,13 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Mirror;
+
 
 namespace Kaleidoscoped
 {
-    public class Timer : MonoBehaviour
+    public class Timer : NetworkBehaviour
     {
-        public float currTime = 0f;
-        public float startTime = 360f;
+        [SyncVar]
+        public float currTime;
+
+        [SyncVar]
+        public bool gameStarted = false;
+
+        public float startTime;
 
         [SerializeField] Text timerText;
 
@@ -19,27 +26,41 @@ namespace Kaleidoscoped
             currTime = startTime;
         }
 
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            currTime = startTime;
+            gameStarted = true;
+        }
+
         void Update()
         {
-            currTime -= 1 * Time.deltaTime;
-            var ts = TimeSpan.FromSeconds(currTime);
-            // timerText.text = string.Format("{0:00}:{1:00}", (int)ts.TotalMinutes, (int)ts.Seconds);
-
-            if (currTime < 60)
+            if (isServer) // Only the server updates the time
             {
-                currTime = startTime;
+                currTime -= Time.deltaTime;
+                // if (currTime < 60)
+                // {
+                //     currTime = startTime;
+                // }
+
+                if (currTime <= 0)
+                {
+                    currTime = 0;
+                    // Logic for when time runs out
+                }
             }
 
-            if (currTime <= 0)
+            if (isClient) // Both server and clients update the display
             {
-                currTime = 0;
-                // SceneManager.LoadScene("GameOver");
+                var ts = TimeSpan.FromSeconds(currTime);
+                timerText.text = string.Format("{0:00}:{1:00}", (int)ts.TotalMinutes, (int)ts.Seconds);
             }
         }
 
         public bool IsTimeUp()
         {
-            return currTime <= 0;
+
+            return (currTime <= 0 && gameStarted);
         }
 
     }

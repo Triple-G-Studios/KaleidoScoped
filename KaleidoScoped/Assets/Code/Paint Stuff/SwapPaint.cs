@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 
 namespace Kaleidoscoped
@@ -16,7 +17,7 @@ namespace Kaleidoscoped
         // Methods
         void OnTriggerEnter(Collider other)
         {
-            PlayerController targetPlayer = other.GetComponent<PlayerController>();
+            LukePlayerMovement targetPlayer = other.GetComponent<LukePlayerMovement>();
             if (targetPlayer != null)
             {
                 Color paintColor = Color.red; // Default

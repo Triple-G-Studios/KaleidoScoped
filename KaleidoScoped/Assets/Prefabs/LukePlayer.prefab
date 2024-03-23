@@ -398,7 +398,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 0}
   projectilePrefab: {fileID: 3240269074512505205, guid: 4a9363aaa67bc4c009434b6c883a9851, type: 3}
   projectilePool: {fileID: 0}
-  currentColor: 
+  currentColor: blue
   color: {r: 0, g: 0, b: 1, a: 1}
   weapon: rifle
   pauseMenuUI: {fileID: 0}

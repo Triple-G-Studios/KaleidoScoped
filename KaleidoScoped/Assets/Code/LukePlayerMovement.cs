@@ -330,7 +330,7 @@ namespace StarterAssets
 
             if (projectileScript != null)
             {
-                projectileScript.Initialize(forward, 75f, color);
+                projectileScript.Initialize(forward, 75f, color, currentColor);
             }
 
         }

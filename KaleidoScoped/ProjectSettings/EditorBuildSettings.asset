@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: 28a6facf877921a4ebc74a2a57740962
   - enabled: 0
     path: Assets/Scenes/JoeyScene.unity
     guid: fe96c983f11224e479d74c06944a4167
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: c34a2858a5b064cac996782c692e8437
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 4b47638a46cd4415f86ae46f0e66169c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LobbyLanding.unity
     guid: 8d8f69ae488773247a35a7c54645cb0e
   - enabled: 0

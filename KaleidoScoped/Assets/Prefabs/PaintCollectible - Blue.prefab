@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splatterPrefab: {fileID: 364700010717725952, guid: dd134b192e0c14dae89bc7f01baeb135, type: 3}
-  paintballPrefab: {fileID: 3240269074512505205, guid: 97e6af6cf193341908652bce3f5e6621, type: 3}
+  paintballPrefab: {fileID: 3240269074512505205, guid: 4a9363aaa67bc4c009434b6c883a9851, type: 3}
   color: blue

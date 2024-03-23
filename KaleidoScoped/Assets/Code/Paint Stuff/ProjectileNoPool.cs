@@ -10,11 +10,15 @@ namespace Kaleidoscoped
         [SerializeField] private float lifetime = 5f;
         [SerializeField] private GameObject paintSplatPrefab;
         private Color splatterColor;
+        private string cString;
+
 
         // This method has been simplified to remove the pool parameter
-        public void Initialize(Vector3 direction, float force, Color splatColor)
+        public void Initialize(Vector3 direction, float force, Color splatColor, string colorString)
         {
             splatterColor = splatColor;
+            cString = colorString;
+
 
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero; // Reset velocity to ensure the force applies correctly
@@ -47,10 +51,8 @@ namespace Kaleidoscoped
 
             // If you have a SplatterController script handling specific logic for the splat
             SplatterController splatter = splat.GetComponent<SplatterController>();
-            // if (splatter != null)
-            // {
-            //     // Handle additional splatter setup here, if necessary
-            // }
+            if (splatter != null) splatter.color = cString;
+
         }
 
         private IEnumerator DestroyAfterDelay(float delay)

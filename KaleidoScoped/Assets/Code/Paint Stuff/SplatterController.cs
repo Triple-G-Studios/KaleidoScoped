@@ -17,7 +17,7 @@ namespace Kaleidoscoped
 
         void OnTriggerStay(Collider other)
         {
-            FirstPersonController targetPlayer = other.GetComponent<FirstPersonController>();
+            LukePlayerMovement targetPlayer = other.GetComponent<LukePlayerMovement>();
 
             if (targetPlayer != null)
             {
@@ -44,7 +44,7 @@ namespace Kaleidoscoped
                 else if (color == "red")
                 {
                     targetPlayer.JumpHeight = 0f;
-                } 
+                }
 
                 else
                 {
@@ -57,7 +57,7 @@ namespace Kaleidoscoped
 
         void OnTriggerExit(Collider other)
         {
-            FirstPersonController targetPlayer = other.GetComponent<FirstPersonController>();
+            LukePlayerMovement targetPlayer = other.GetComponent<LukePlayerMovement>();
 
             if (targetPlayer != null)
             {
