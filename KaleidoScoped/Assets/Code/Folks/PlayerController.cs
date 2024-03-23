@@ -217,6 +217,7 @@ namespace Kaleidoscoped
 
         }
 
+        //load the player's info into the scene proper
         void loadData()
         {
             currentColor = PlayerPrefs.GetString("color");
