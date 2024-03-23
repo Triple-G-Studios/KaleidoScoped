@@ -23,7 +23,7 @@ namespace Kaleidoscoped
             PlayerPrefs.SetString("color", color);
             PlayerPrefs.SetString("weapon", weapon);
             PlayerPrefs.SetInt("team", team);
-            SceneManager.LoadScene("JoeyScene 1");
+            SceneManager.LoadScene("Instructions");
         }
 
         public void riflePress()
