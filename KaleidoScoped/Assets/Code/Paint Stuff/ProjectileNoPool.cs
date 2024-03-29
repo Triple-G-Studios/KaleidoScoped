@@ -12,12 +12,16 @@ namespace Kaleidoscoped
         private Color splatterColor;
         private string cString;
 
+        public float damage = 100f;
 
-        // This method has been simplified to remove the pool parameter
-        public void Initialize(Vector3 direction, float force, Color splatColor, string colorString)
+        [SerializeField] private GameObject shooter;
+
+
+        public void Initialize(Vector3 direction, float force, Color splatColor, string colorString, GameObject shooterGameObject)
         {
             splatterColor = splatColor;
             cString = colorString;
+            shooter = shooterGameObject;
 
 
             Rigidbody rb = GetComponent<Rigidbody>();
@@ -29,14 +33,48 @@ namespace Kaleidoscoped
 
         private void OnCollisionEnter(Collision collision)
         {
-            // Handle collision with non-player and non-enemy objects
+
+            GameObject hitObject = collision.gameObject;
+
+            // Check if the hit object or any of its parents is the shooter
+            bool hitShooter = false;
+            while (hitObject != null)
+            {
+                if (hitObject == shooter)
+                {
+                    hitShooter = true;
+                    break;
+                }
+                if (hitObject.transform.parent != null)
+                {
+                    hitObject = hitObject.transform.parent.gameObject;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (hitShooter)
+            {
+                Debug.Log("Projectile hit the shooter. Ignoring.");
+                return;
+            }
+
             if (!collision.collider.CompareTag("Enemy") && !collision.collider.CompareTag("Player"))
             {
                 CreatePaintSplat(collision);
             }
 
-            // Destroy or deactivate the projectile
-            Destroy(gameObject); // Or Deactivate if using a future pooling mechanism
+            var hitPlayer = collision.collider.GetComponentInParent<PlayerHealth>(); // Assuming you have a PlayerHealth script
+
+            if (hitPlayer != null)
+            {
+                hitPlayer.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+
+            Destroy(gameObject);
         }
 
         private void CreatePaintSplat(Collision collision)
@@ -49,7 +87,6 @@ namespace Kaleidoscoped
             Renderer splatRenderer = splat.GetComponent<Renderer>();
             splatRenderer.material.color = splatterColor;
 
-            // If you have a SplatterController script handling specific logic for the splat
             SplatterController splatter = splat.GetComponent<SplatterController>();
             if (splatter != null) splatter.color = cString;
 

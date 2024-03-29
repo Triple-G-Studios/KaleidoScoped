@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 5
   paintSplatPrefab: {fileID: 364700010717725952, guid: dd134b192e0c14dae89bc7f01baeb135, type: 3}
+  damage: 100

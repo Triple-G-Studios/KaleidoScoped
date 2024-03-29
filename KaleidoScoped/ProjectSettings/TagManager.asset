@@ -15,6 +15,9 @@ TagManager:
   - ProjectilePool
   - PauseMenu
   - EnemyRemaining
+  - RespawnManager
+  - RespawnMessageController
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX
@@ -25,7 +28,7 @@ TagManager:
   - POV
   - Ground
   - Projectile
-  - 
+  - Player
   - 
   - 
   - 

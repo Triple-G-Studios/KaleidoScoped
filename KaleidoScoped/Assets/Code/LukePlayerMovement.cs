@@ -124,6 +124,9 @@ namespace StarterAssets
             // transform.GetComponent<LukePlayerMovement>().pauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu");
             GameObject pauseMenu = Instantiate(pauseMenuPrefab);
             transform.GetComponent<LukePlayerMovement>().pauseMenuUI = pauseMenu;
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         public override void OnStartAuthority()
@@ -147,6 +150,11 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            transform.GetComponent<PlayerHealth>().respawnManager = GameObject.FindGameObjectWithTag("RespawnManager").GetComponent<RespawnManager>();
+            transform.GetComponent<PlayerHealth>().respawnMessageController = GameObject.FindGameObjectWithTag("RespawnMessageController").GetComponent<RespawnMessageController>();
+            GameObject.FindGameObjectWithTag("RespawnManager").GetComponent<RespawnManager>().respawnPoint = GameObject.FindGameObjectWithTag("RespawnPoint").transform;
+
         }
 
         private void Update()
@@ -288,7 +296,7 @@ namespace StarterAssets
         // }
 
         [Command]
-        private void CmdOnPrimaryAttack(Vector3 position, Quaternion rotation, Vector3 forward)
+        private void CmdOnPrimaryAttack(Vector3 position, Quaternion rotation, Vector3 forward, GameObject shooter)
         {
             // var projectilePoolObj = NetworkServer.spawned[poolNetId].gameObject.GetComponent<ProjectilePool>();
             // if (projectilePoolObj != null)
@@ -315,12 +323,12 @@ namespace StarterAssets
             // Projectile projectileScript = projectile.GetComponent<Projectile>();
             // if (projectileScript != null) projectileScript.Initialize(projectilePool, forward, 75f, color, currentColor);
 
-            RpcOnPrimaryAttackEffects(position, rotation, forward);
+            RpcOnPrimaryAttackEffects(position, rotation, forward, shooter);
         }
 
 
         [ClientRpc]
-        void RpcOnPrimaryAttackEffects(Vector3 position, Quaternion rotation, Vector3 forward)
+        void RpcOnPrimaryAttackEffects(Vector3 position, Quaternion rotation, Vector3 forward, GameObject shooter)
         {
             // Handle sounds here I think
             GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
@@ -330,7 +338,7 @@ namespace StarterAssets
 
             if (projectileScript != null)
             {
-                projectileScript.Initialize(forward, 75f, color, currentColor);
+                projectileScript.Initialize(forward, 75f, color, currentColor, gameObject);
             }
 
         }
@@ -341,7 +349,8 @@ namespace StarterAssets
 
             // var poolNetId = projectilePool.GetComponent<NetworkIdentity>().netId;
 
-            CmdOnPrimaryAttack(projectileOrigin.position, Quaternion.LookRotation(povOrigin.forward), povOrigin.forward);
+            CmdOnPrimaryAttack(projectileOrigin.position, Quaternion.LookRotation(povOrigin.forward), povOrigin.forward, gameObject);
+            print(gameObject);
         }
 
 
