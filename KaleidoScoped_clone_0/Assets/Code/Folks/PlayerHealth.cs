@@ -19,7 +19,13 @@ namespace Kaleidoscoped
             {
                 health = 0f;
                 RpcHandleDeath();
-                respawnManager.RespawnPlayer(gameObject);
+
+                // Get team
+                int team = PlayerPrefs.GetInt("team");
+                print("TEAM: " + team);
+                bool isBlueTeam = (team == 1);
+
+                respawnManager.RespawnPlayer(gameObject, isBlueTeam);
             }
         }
 

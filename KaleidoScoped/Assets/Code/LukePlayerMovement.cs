@@ -153,7 +153,26 @@ namespace StarterAssets
 
             transform.GetComponent<PlayerHealth>().respawnManager = GameObject.FindGameObjectWithTag("RespawnManager").GetComponent<RespawnManager>();
             transform.GetComponent<PlayerHealth>().respawnMessageController = GameObject.FindGameObjectWithTag("RespawnMessageController").GetComponent<RespawnMessageController>();
-            GameObject.FindGameObjectWithTag("RespawnManager").GetComponent<RespawnManager>().respawnPoint = GameObject.FindGameObjectWithTag("RespawnPoint").transform;
+           
+            RespawnManager respawnManager = GameObject.FindGameObjectWithTag("RespawnManager").GetComponent<RespawnManager>();
+            GameObject[] blueSpawnPointObjects = GameObject.FindGameObjectsWithTag("BlueSpawn");
+            GameObject[] redSpawnPointObjects = GameObject.FindGameObjectsWithTag("RedSpawn");
+
+            // Convert GameObject arrays to Transform arrays
+            Transform[] blueSpawnPoints = new Transform[blueSpawnPointObjects.Length];
+            for(int i = 0; i < blueSpawnPointObjects.Length; i++)
+            {
+                blueSpawnPoints[i] = blueSpawnPointObjects[i].transform;
+            }
+
+            Transform[] redSpawnPoints = new Transform[redSpawnPointObjects.Length];
+            for (int i = 0; i < redSpawnPointObjects.Length; i++)
+            {
+                redSpawnPoints[i] = redSpawnPointObjects[i].transform;
+            }
+
+            respawnManager.blueSpawnPoints = blueSpawnPoints;
+            respawnManager.redSpawnPoints = redSpawnPoints;
 
         }
 

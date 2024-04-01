@@ -7,22 +7,23 @@ namespace Kaleidoscoped
     public class RespawnManager : NetworkBehaviour
     {
         public float respawnTime = 5f;
-        public Transform respawnPoint;
+        public Transform[] blueSpawnPoints;
+        public Transform[] redSpawnPoints;
 
         [Server]
-        public void RespawnPlayer(GameObject player)
+        public void RespawnPlayer(GameObject player, bool isBlueTeam)
         {
-            StartCoroutine(RespawnCoroutine(player));
+            StartCoroutine(RespawnCoroutine(player, isBlueTeam));
         }
 
-        private IEnumerator RespawnCoroutine(GameObject player)
+        private IEnumerator RespawnCoroutine(GameObject player, bool isBlueTeam)
         {
             // Inform all clients to deactivate this player
             RpcDeactivatePlayer(player);
 
             yield return new WaitForSeconds(respawnTime);
 
-            Vector3 spawnPoint = GetSpawnPoint();
+            Vector3 spawnPoint = GetSpawnPoint(isBlueTeam);
             RpcSetPlayerPosition(player, spawnPoint);
 
 
@@ -55,9 +56,15 @@ namespace Kaleidoscoped
             }
         }
 
-        private Vector3 GetSpawnPoint()
+        private Vector3 GetSpawnPoint(bool isBlueTeam)
         {
-            return respawnPoint.position;
+            if (isBlueTeam)
+            {
+                return blueSpawnPoints[Random.Range(0, blueSpawnPoints.Length)].position;
+            } else
+            {
+                return redSpawnPoints[Random.Range(0, redSpawnPoints.Length)].position;
+            }
         }
     }
 }

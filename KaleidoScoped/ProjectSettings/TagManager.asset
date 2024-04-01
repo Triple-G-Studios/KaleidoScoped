@@ -18,6 +18,8 @@ TagManager:
   - RespawnManager
   - RespawnMessageController
   - RespawnPoint
+  - RedSpawn
+  - BlueSpawn
   layers:
   - Default
   - TransparentFX
