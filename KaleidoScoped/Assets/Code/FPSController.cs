@@ -124,7 +124,7 @@ namespace Kaleidoscoped
 			Projectile projectileScript = projectile.GetComponent<Projectile>();
 			if (projectileScript != null)
 			{
-				projectileScript.Initialize(projectilePool, CameraRoot.forward, 75f, color, currentColor);
+				//projectileScript.Initialize(projectilePool, CameraRoot.forward, 75f, color, currentColor);
 			}
 		}
 	}

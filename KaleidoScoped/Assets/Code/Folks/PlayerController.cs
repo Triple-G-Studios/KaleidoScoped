@@ -199,9 +199,9 @@ namespace Kaleidoscoped
 
                 if (projectileScript1 != null && projectileScript2 != null && projectileScript3 != null)
                 {
-                    projectileScript1.Initialize(projectilePool, Quaternion.AngleAxis(10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
-                    projectileScript2.Initialize(projectilePool, povOrigin.forward, 15f, color, currentColor);
-                    projectileScript3.Initialize(projectilePool, Quaternion.AngleAxis(-10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
+                    //projectileScript1.Initialize(projectilePool, Quaternion.AngleAxis(10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
+                    //projectileScript2.Initialize(projectilePool, povOrigin.forward, 15f, color, currentColor);
+                    //projectileScript3.Initialize(projectilePool, Quaternion.AngleAxis(-10, Vector3.up) * povOrigin.forward, 15f, color, currentColor);
                 }
             }
             if (weapon == "rifle")
@@ -212,7 +212,7 @@ namespace Kaleidoscoped
 
                 Projectile projectileScript = projectile.GetComponent<Projectile>();
 
-                if (projectileScript != null) projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
+                //if (projectileScript != null) projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
             }
 
         }

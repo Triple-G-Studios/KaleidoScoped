@@ -350,6 +350,7 @@ namespace StarterAssets
         void RpcOnPrimaryAttackEffects(Vector3 position, Quaternion rotation, Vector3 forward, GameObject shooter)
         {
             // Handle sounds here I think
+            SoundManager.instance.PlaySoundShoot();
             GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
             ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
 

@@ -33,7 +33,6 @@ namespace Kaleidoscoped
 
         private void OnCollisionEnter(Collision collision)
         {
-
             GameObject hitObject = collision.gameObject;
 
             // Check if the hit object or any of its parents is the shooter
@@ -79,6 +78,7 @@ namespace Kaleidoscoped
 
         private void CreatePaintSplat(Collision collision)
         {
+            SoundManager.instance.PlaySoundSplat();
             ContactPoint contact = collision.contacts[0];
             Quaternion rotation = Quaternion.LookRotation(-contact.normal);
             Vector3 position = contact.point + contact.normal * 0.01f; // Offset to prevent z-fighting

@@ -40,7 +40,6 @@ namespace Kaleidoscoped
         public GameObject Player;
 
 
-
         void Awake()
         {
             //if (!isLocalPlayer)
@@ -196,7 +195,7 @@ namespace Kaleidoscoped
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             if (projectileScript != null)
             {
-                projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
+                //projectileScript.Initialize(projectilePool, povOrigin.forward, 75f, color, currentColor);
             }
         }
     }
