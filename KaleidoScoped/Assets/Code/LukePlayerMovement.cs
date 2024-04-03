@@ -90,8 +90,7 @@ namespace StarterAssets
 
         public string weapon = "rifle";
 
-        public GameObject pauseMenuUI;
-        public GameObject pauseMenuPrefab;
+        public bool isPaused = false;
 
         private bool IsCurrentDeviceMouse
         {
@@ -121,9 +120,9 @@ namespace StarterAssets
             transform.GetComponent<LukePlayerMovement>().projectileOrigin = GameObject.FindGameObjectWithTag("ProjectileOrigin").transform;
             transform.GetComponent<LukePlayerMovement>().projectilePool = GameObject.FindGameObjectWithTag("ProjectilePool").GetComponent<ProjectilePool>();
 
-            // transform.GetComponent<LukePlayerMovement>().pauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu");
-            GameObject pauseMenu = Instantiate(pauseMenuPrefab);
-            transform.GetComponent<LukePlayerMovement>().pauseMenuUI = pauseMenu;
+            //// transform.GetComponent<LukePlayerMovement>().pauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu");
+            //GameObject pauseMenu = Instantiate(pauseMenuPrefab);
+            //transform.GetComponent<LukePlayerMovement>().pauseMenuUI = pauseMenu;
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -183,14 +182,19 @@ namespace StarterAssets
                 return;
             }
 
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            if (!MenuController.isPaused)
+            {
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+
+                if (_input.pause && !MenuController.isPaused) MenuController.instance.Pause();
+            }
         }
 
         private void LateUpdate()
         {
-            CameraRotation();
+            if (!MenuController.isPaused) CameraRotation();
         }
 
         private void GroundedCheck()
@@ -366,7 +370,7 @@ namespace StarterAssets
 
         private void OnPrimaryAttack()
         {
-            if (!isLocalPlayer) return;
+            if (!isLocalPlayer || MenuController.isPaused) return;
 
             // var poolNetId = projectilePool.GetComponent<NetworkIdentity>().netId;
 

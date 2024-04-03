@@ -61,11 +61,20 @@ namespace Kaleidoscoped
 			{
 				pauseMenuUI.SetActive(true);
 				Time.timeScale = 0f;
-				MenuController.isPaused = true;
+				//MenuController.isPaused = true;
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 			}
 		}
+
+		public void UnPause()
+        {
+			pauseMenuUI.SetActive(false);
+			Time.timeScale = 1f;
+			//MenuController.isPaused = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+        }
 
 		private void CamMovements()
 		{

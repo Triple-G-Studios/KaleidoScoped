@@ -26,8 +26,6 @@ namespace Kaleidoscoped
 
         public GameObject pauseMenuUI;
 
-        private bool isPaused = false;
-
         // public InputActionAsset actionAsset;
 
         // private InputActionMap playerActionMap;
@@ -124,7 +122,6 @@ namespace Kaleidoscoped
         {
             // pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
-            isPaused = true;
 
             // playerActionMap.Disable();
             Cursor.lockState = CursorLockMode.None;
@@ -135,7 +132,6 @@ namespace Kaleidoscoped
         {
             // pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
-            isPaused = false;
 
             // playerActionMap.Enable();
             Cursor.lockState = CursorLockMode.Locked;
