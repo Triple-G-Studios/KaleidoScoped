@@ -9,7 +9,7 @@ namespace Kaleidoscoped
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<FPSController>())
+            if (other.GetComponent<LukePlayerMovement>())
             {
                 string currentScene = SceneManager.GetActiveScene().name;
                 SceneManager.LoadScene(currentScene);
