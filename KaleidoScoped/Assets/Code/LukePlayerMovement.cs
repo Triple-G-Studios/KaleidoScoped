@@ -267,6 +267,7 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            //SFXManager.instance.PlayGrassySound();
         }
 
         // private void OnPrimaryAttack()
@@ -350,7 +351,7 @@ namespace StarterAssets
         void RpcOnPrimaryAttackEffects(Vector3 position, Quaternion rotation, Vector3 forward, GameObject shooter)
         {
             // Handle sounds here I think
-            SoundManager.instance.PlaySoundShoot();
+            SFXManager.instance.PlaySoundShoot();
             GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
             ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
 
