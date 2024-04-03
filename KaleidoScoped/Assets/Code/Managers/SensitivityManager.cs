@@ -13,7 +13,7 @@ namespace Kaleidoscoped
         {
             if (!PlayerPrefs.HasKey("mouseSensitivity"))
             {
-                PlayerPrefs.SetFloat("mouseSensitivity", 300f);
+                PlayerPrefs.SetFloat("mouseSensitivity", 5f);
                 Load();
             }
             else
@@ -24,20 +24,18 @@ namespace Kaleidoscoped
 
         public void ChangeSensitivity()
         {
-            FPSController.mouseSensitivity = sensitivitySlider.value * 300f;
+            LukePlayerMovement.mouseSensitivity = sensitivitySlider.value * 5f;
             Save();
         }
 
         private void Load()
         {
-            Debug.Log("Hello " + sensitivitySlider.value);
-
             sensitivitySlider.value = PlayerPrefs.GetFloat("mouseSensitivity");
         }
 
         private void Save()
         {
-            PlayerPrefs.SetFloat("mouseSensitivity", sensitivitySlider.value * 300f);
+            PlayerPrefs.SetFloat("mouseSensitivity", sensitivitySlider.value * 5f);
         }
     }
 }

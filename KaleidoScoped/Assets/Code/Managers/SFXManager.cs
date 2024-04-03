@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Kaleidoscoped
 {
@@ -9,6 +10,7 @@ namespace Kaleidoscoped
         public static SFXManager instance;
 
         // Outlets
+        [SerializeField] Slider sfxSlider;
         AudioSource AudioSource;
         public AudioClip splatSound;
         public AudioClip shootSound;
@@ -25,6 +27,15 @@ namespace Kaleidoscoped
         void Start()
         {
             AudioSource = GetComponent<AudioSource>();
+
+            if (!PlayerPrefs.HasKey("sfxVolume"))
+            {
+                PlayerPrefs.SetFloat("sfxVolume", 1);
+                Load();
+            } else
+            {
+                Load();
+            }
         }
 
         public void PlaySoundSplat()
@@ -57,5 +68,20 @@ namespace Kaleidoscoped
             AudioSource.PlayOneShot(shootSound);
         }
 
+        public void ChangeVolume()
+        {
+            AudioListener.volume = sfxSlider.value;
+            Save();
+        }
+
+        private void Load()
+        {
+            sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        }
+
+        private void Save()
+        {
+            PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value);
+        }
     }
 }

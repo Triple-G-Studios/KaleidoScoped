@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using Kaleidoscoped;
 #endif
 
-namespace StarterAssets
+namespace Kaleidoscoped
 {
     [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -23,6 +23,8 @@ namespace StarterAssets
         public float RotationSpeed = 1.0f;
         [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
+
+        public static float mouseSensitivity = 5f;
 
         [Space(10)]
         [Tooltip("The height the player can jump")]
@@ -212,8 +214,8 @@ namespace StarterAssets
                 //Don't multiply mouse input by Time.deltaTime
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 
-                _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-                _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+                _cinemachineTargetPitch += _input.look.y * mouseSensitivity * deltaTimeMultiplier;
+                _rotationVelocity = _input.look.x * mouseSensitivity * deltaTimeMultiplier;
 
                 // clamp our pitch rotation
                 _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
