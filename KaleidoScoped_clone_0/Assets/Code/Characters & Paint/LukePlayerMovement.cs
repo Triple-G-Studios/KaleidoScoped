@@ -93,6 +93,7 @@ namespace Kaleidoscoped
         public string weapon = "rifle";
 
         public bool isPaused = false;
+        public bool pauseButtonPressed = false;
 
         private bool IsCurrentDeviceMouse
         {
@@ -179,24 +180,24 @@ namespace Kaleidoscoped
 
         private void Update()
         {
-            if (!isLocalPlayer)
+            if (!isLocalPlayer || MenuController.instance.isPaused)
             {
                 return;
             }
 
-            if (!MenuController.isPaused)
-            {
-                JumpAndGravity();
-                GroundedCheck();
-                Move();
+            JumpAndGravity();
+            GroundedCheck();
+            Move();
 
-                if (_input.pause && !MenuController.isPaused) MenuController.instance.Pause();
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                MenuController.instance.Pause();
             }
         }
 
         private void LateUpdate()
         {
-            if (!MenuController.isPaused) CameraRotation();
+            if (!MenuController.instance.isPaused) CameraRotation();
         }
 
         private void GroundedCheck()
@@ -372,7 +373,7 @@ namespace Kaleidoscoped
 
         private void OnPrimaryAttack()
         {
-            if (!isLocalPlayer || MenuController.isPaused) return;
+            if (!isLocalPlayer || MenuController.instance.isPaused) return;
 
             // var poolNetId = projectilePool.GetComponent<NetworkIdentity>().netId;
 

@@ -7,7 +7,7 @@ namespace Kaleidoscoped
         public static MenuController instance;
 
         public GameObject pauseMenuUI;
-        public static bool isPaused = false;
+        public bool isPaused;
 
         void Awake()
         {
@@ -17,18 +17,17 @@ namespace Kaleidoscoped
         public void Continue()
         {
             pauseMenuUI.SetActive(false);
-            Time.timeScale = 1f;
             isPaused = false;
+            Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 
         public void Pause()
         {
-            isPaused = true;
             pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
             isPaused = true;
+            Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
