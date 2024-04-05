@@ -3,7 +3,7 @@
 using UnityEngine.InputSystem;
 #endif
 
-namespace StarterAssets
+namespace Kaleidoscoped
 {
 	[RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 
-namespace StarterAssets
+namespace Kaleidoscoped
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
@@ -12,6 +12,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool pause;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +46,11 @@ namespace StarterAssets
 		}
 #endif
 
+		public void OnPause(InputValue value)
+        {
+			PauseInput(value.isPressed);
+        }
+
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{
@@ -65,6 +71,11 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+
+		public void PauseInput(bool newPauseState)
+        {
+			pause = newPauseState;
+        }
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
