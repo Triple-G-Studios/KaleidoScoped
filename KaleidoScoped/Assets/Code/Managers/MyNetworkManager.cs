@@ -16,11 +16,21 @@ namespace Kaleidoscoped
         {
             base.OnStartServer();
 
-            GameObject blueSpawnPointsInstance = Instantiate(blueSpawnPointsPrefab);
-            GameObject redSpawnPointsInstance = Instantiate(redSpawnPointsPrefab);
+            GameObject[] blueSpawnPointObjects = GameObject.FindGameObjectsWithTag("BlueSpawn");
+            GameObject[] redSpawnPointObjects = GameObject.FindGameObjectsWithTag("RedSpawn");
 
-            Transform[] blueSpawnPoints = blueSpawnPointsInstance.GetComponentsInChildren<Transform>();
-            Transform[] redSpawnPoints = redSpawnPointsInstance.GetComponentsInChildren<Transform>();
+            // Convert GameObject arrays to Transform arrays
+            Transform[] blueSpawnPoints = new Transform[blueSpawnPointObjects.Length];
+            for (int i = 0; i < blueSpawnPointObjects.Length; i++)
+            {
+                blueSpawnPoints[i] = blueSpawnPointObjects[i].transform;
+            }
+
+            Transform[] redSpawnPoints = new Transform[redSpawnPointObjects.Length];
+            for (int i = 0; i < redSpawnPointObjects.Length; i++)
+            {
+                redSpawnPoints[i] = redSpawnPointObjects[i].transform;
+            }
 
             respawnManager.blueSpawnPoints = blueSpawnPoints;
             respawnManager.redSpawnPoints = redSpawnPoints;
