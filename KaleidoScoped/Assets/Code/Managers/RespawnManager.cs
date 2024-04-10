@@ -24,7 +24,7 @@ namespace Kaleidoscoped
             yield return new WaitForSeconds(respawnTime);
 
             Transform spawnPoint = GetSpawnPoint(isBlueTeam);
-            RpcSetPlayerPosition(player, spawnPoint);
+            RpcSetPlayerPosition(player, spawnPoint.position, spawnPoint.rotation);
 
 
             // Inform all clients to reactivate the player and reset health
@@ -32,9 +32,17 @@ namespace Kaleidoscoped
         }
 
         [ClientRpc]
-        void RpcSetPlayerPosition(GameObject player, Transform transform)
+        void RpcSetPlayerPosition(GameObject player, Vector3 position, Quaternion rotation)
         {
-            player.transform.position = transform.position;
+            if (player != null && position != null && rotation != null)
+            {
+                player.transform.position = position;
+                player.transform.rotation = rotation;
+            }
+            else
+            {
+                Debug.LogError("Either player/vector3/rotation are null in RpcSetPlayerPosition.");
+            }
         }
 
         // Deactivate the player on all clients

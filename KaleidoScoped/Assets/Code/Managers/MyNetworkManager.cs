@@ -93,15 +93,16 @@ namespace Kaleidoscoped
 
         void OnCreateCharacter(NetworkConnectionToClient conn, CreateCharacterMessage msg)
         {
-            int team = PlayerPrefs.GetInt("team", 1);
-            bool isBlueTeam = (team == 1);
-
             if (respawnManager == null)
             {
                 Debug.LogWarning("RespawnManager is not assigned. Using default spawn point.");
                 // Handle the case where respawnManager is not assigned, e.g., provide a default spawn point
                 return;
             }
+
+            int team = PlayerPrefs.GetInt("team", 1);
+            bool isBlueTeam = (team == 1);
+            Debug.Log("Team " + team);
 
             Transform startPos = respawnManager.GetSpawnPoint(isBlueTeam);
             if (startPos == null)

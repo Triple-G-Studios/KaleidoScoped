@@ -67,10 +67,13 @@ namespace Kaleidoscoped
 
             var hitPlayer = collision.collider.GetComponentInParent<PlayerHealth>(); // Assuming you have a PlayerHealth script
 
-            if (hitPlayer != null)
+            if (hitPlayer != null && NetworkServer.active)
             {
                 hitPlayer.TakeDamage(damage);
                 Destroy(gameObject);
+            } else
+            {
+                Debug.Log("Enemy player is null or server is inactive");
             }
 
             Destroy(gameObject);
