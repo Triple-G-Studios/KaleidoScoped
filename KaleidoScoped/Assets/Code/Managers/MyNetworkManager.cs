@@ -9,12 +9,11 @@ namespace Kaleidoscoped
     {
         public RespawnManager respawnManager;
 
-        public GameObject blueSpawnPointsPrefab;
-        public GameObject redSpawnPointsPrefab;
-
         public override void OnStartServer()
         {
             base.OnStartServer();
+
+            Debug.Log("Server started");
 
             GameObject[] blueSpawnPointObjects = GameObject.FindGameObjectsWithTag("BlueSpawn");
             GameObject[] redSpawnPointObjects = GameObject.FindGameObjectsWithTag("RedSpawn");
@@ -40,10 +39,13 @@ namespace Kaleidoscoped
         {
             base.OnServerAddPlayer(conn);
 
+            Debug.Log("Adding player");
+
             int playerTeam = PlayerPrefs.GetInt("team", 1);
-            print("TEAM " + playerTeam);
+            Debug.Log("Player team: " + playerTeam);
             bool isBlueTeam = (playerTeam == 1);
             Vector3 spawnPoint = respawnManager.GetSpawnPoint(isBlueTeam);
+            Debug.Log("Spawn point: " + spawnPoint);
 
             GameObject player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
             NetworkServer.AddPlayerForConnection(conn, player);
