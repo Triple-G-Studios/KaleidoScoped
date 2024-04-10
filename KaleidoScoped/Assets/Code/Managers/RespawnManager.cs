@@ -23,7 +23,7 @@ namespace Kaleidoscoped
 
             yield return new WaitForSeconds(respawnTime);
 
-            Vector3 spawnPoint = GetSpawnPoint(isBlueTeam);
+            Transform spawnPoint = GetSpawnPoint(isBlueTeam);
             RpcSetPlayerPosition(player, spawnPoint);
 
 
@@ -32,9 +32,9 @@ namespace Kaleidoscoped
         }
 
         [ClientRpc]
-        void RpcSetPlayerPosition(GameObject player, Vector3 position)
+        void RpcSetPlayerPosition(GameObject player, Transform transform)
         {
-            player.transform.position = position;
+            player.transform.position = transform.position;
         }
 
         // Deactivate the player on all clients
@@ -56,14 +56,14 @@ namespace Kaleidoscoped
             }
         }
 
-        public Vector3 GetSpawnPoint(bool isBlueTeam)
+        public Transform GetSpawnPoint(bool isBlueTeam)
         {
             if (isBlueTeam)
             {
-                return blueSpawnPoints[Random.Range(0, blueSpawnPoints.Length)].position;
+                return blueSpawnPoints[Random.Range(0, blueSpawnPoints.Length)].transform;
             } else
             {
-                return redSpawnPoints[Random.Range(0, redSpawnPoints.Length)].position;
+                return redSpawnPoints[Random.Range(0, redSpawnPoints.Length)].transform;
             }
         }
     }
