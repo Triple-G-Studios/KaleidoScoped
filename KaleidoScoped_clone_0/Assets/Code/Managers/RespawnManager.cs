@@ -56,7 +56,7 @@ namespace Kaleidoscoped
             }
         }
 
-        private Vector3 GetSpawnPoint(bool isBlueTeam)
+        public Vector3 GetSpawnPoint(bool isBlueTeam)
         {
             if (isBlueTeam)
             {

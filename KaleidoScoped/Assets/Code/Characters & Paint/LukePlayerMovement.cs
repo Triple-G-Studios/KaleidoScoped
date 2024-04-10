@@ -116,6 +116,7 @@ namespace Kaleidoscoped
             }
         }
 
+
         public override void OnStartLocalPlayer()
         {
             GameObject.FindGameObjectWithTag("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>().Follow = transform.GetChild(0).transform;
@@ -157,7 +158,7 @@ namespace Kaleidoscoped
             transform.GetComponent<PlayerHealth>().respawnMessageController = GameObject.FindGameObjectWithTag("RespawnMessageController").GetComponent<RespawnMessageController>();
            
             RespawnManager respawnManager = GameObject.FindGameObjectWithTag("RespawnManager").GetComponent<RespawnManager>();
-            GameObject[] blueSpawnPointObjects = GameObject.FindGameObjectsWithTag("BlueSpawn");
+            /*GameObject[] blueSpawnPointObjects = GameObject.FindGameObjectsWithTag("BlueSpawn");
             GameObject[] redSpawnPointObjects = GameObject.FindGameObjectsWithTag("RedSpawn");
 
             // Convert GameObject arrays to Transform arrays
@@ -174,7 +175,7 @@ namespace Kaleidoscoped
             }
 
             respawnManager.blueSpawnPoints = blueSpawnPoints;
-            respawnManager.redSpawnPoints = redSpawnPoints;
+            respawnManager.redSpawnPoints = redSpawnPoints;*/
 
         }
 

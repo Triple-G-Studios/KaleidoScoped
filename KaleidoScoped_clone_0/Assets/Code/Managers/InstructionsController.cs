@@ -7,6 +7,6 @@ namespace Kaleidoscoped
 {
     public class InstructionsController : MonoBehaviour
     {
-        public void loadGame() => SceneManager.LoadScene("JoeyScene 1");
+        public void loadGame() => SceneManager.LoadScene("Main Game");
     }
 }
