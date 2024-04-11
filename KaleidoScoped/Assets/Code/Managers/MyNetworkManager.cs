@@ -26,7 +26,7 @@ namespace Kaleidoscoped
             base.Awake();
         }
 
-        public struct CreateCharacterMessage: NetworkMessage
+        public struct CreateCharacterMessage : NetworkMessage
         {
             public string playerName;
             public int characterNumber;
