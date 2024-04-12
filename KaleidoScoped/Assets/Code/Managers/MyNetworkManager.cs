@@ -103,7 +103,7 @@ namespace Kaleidoscoped
             }
 
             // int team = PlayerPrefs.GetInt("team", 1);
-            int team = StaticVariables.teamId;
+            int team = msg.teamId;
 
             print("Team: " + team);
 

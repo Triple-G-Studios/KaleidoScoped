@@ -58,7 +58,7 @@ namespace Kaleidoscoped
         [ClientRpc]
         void RpcReactivatePlayer(GameObject player)
         {
-            if (true)
+            /*if (true)
             {
                 // you can send the message here, or wherever else you want
                 CreateCharacterMessage characterMessage = new CreateCharacterMessage
@@ -69,14 +69,15 @@ namespace Kaleidoscoped
                     teamId = StaticVariables.teamId
                 };
 
+                print("REAL TEAM " + characterMessage.teamId);
                 NetworkClient.Send(characterMessage);
-            }
-            /*player.SetActive(true);
+            }*/
+            player.SetActive(true);
             var playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.health = 100f;
-            }*/
+            }
         }
 
         public Transform GetSpawnPoint(bool isBlueTeam)
