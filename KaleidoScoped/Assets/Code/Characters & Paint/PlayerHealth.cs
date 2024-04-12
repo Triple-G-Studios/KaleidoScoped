@@ -21,8 +21,8 @@ namespace Kaleidoscoped
                 RpcHandleDeath();
 
                 // Get team
-                int team = PlayerPrefs.GetInt("team");
-                print("TEAM: " + team);
+                int team = StaticVariables.teamId;
+                print("TEAM: " + StaticVariables.teamId);
                 bool isBlueTeam = (team == 1);
 
                 respawnManager.RespawnPlayer(gameObject, isBlueTeam);

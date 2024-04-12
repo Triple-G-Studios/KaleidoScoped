@@ -86,7 +86,7 @@ namespace Kaleidoscoped
                     playerName = StaticVariables.playerName,
                     characterNumber = StaticVariables.characterNumber,
                     characterColor = StaticVariables.characterColor,
-                    teamId = PlayerPrefs.GetInt("team")
+                    teamId = StaticVariables.teamId
                 };
 
                 NetworkClient.Send(characterMessage);
@@ -102,7 +102,8 @@ namespace Kaleidoscoped
                 return;
             }
 
-            int team = PlayerPrefs.GetInt("team", 1);
+            // int team = PlayerPrefs.GetInt("team", 1);
+            int team = StaticVariables.teamId;
 
             print("Team: " + team);
 

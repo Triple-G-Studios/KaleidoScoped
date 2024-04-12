@@ -65,12 +65,14 @@ namespace Kaleidoscoped
         public void t1Press()
         {
             team = 1;
+            StaticVariables.teamId = 1;
             currentTeam.text = "Currently Team 1";
         }
 
         public void t2Press()
         {
             team = 2;
+            StaticVariables.teamId = 2;
             currentTeam.text = "Currently Team 2";
         }
     }
