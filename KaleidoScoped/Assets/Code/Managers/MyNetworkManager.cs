@@ -31,6 +31,7 @@ namespace Kaleidoscoped
             public string playerName;
             public int characterNumber;
             public Color characterColor;
+            public int teamId;
         }
 
         public struct ReplaceCharacterMessage : NetworkMessage
@@ -84,7 +85,8 @@ namespace Kaleidoscoped
                 {
                     playerName = StaticVariables.playerName,
                     characterNumber = StaticVariables.characterNumber,
-                    characterColor = StaticVariables.characterColor
+                    characterColor = StaticVariables.characterColor,
+                    teamId = PlayerPrefs.GetInt("team")
                 };
 
                 NetworkClient.Send(characterMessage);
@@ -101,7 +103,12 @@ namespace Kaleidoscoped
             }
 
             int team = PlayerPrefs.GetInt("team", 1);
-            bool isBlueTeam = (team == 1);
+
+            print("Team: " + team);
+
+            bool isBlueTeam = (msg.teamId == 1);
+
+            print("Is blue team: " + isBlueTeam);
             Debug.Log("Team " + team);
 
             Transform startPos = respawnManager.GetSpawnPoint(isBlueTeam);
