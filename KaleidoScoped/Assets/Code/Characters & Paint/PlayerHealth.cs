@@ -20,12 +20,17 @@ namespace Kaleidoscoped
                 health = 0f;
                 RpcHandleDeath();
 
-                // Get team
-                int team = StaticVariables.teamId;
-                print("TEAM: " + StaticVariables.teamId);
-                bool isBlueTeam = (team == 1);
-
-                respawnManager.RespawnPlayer(gameObject, isBlueTeam);
+                // Get the CharacterSelection component of the player object
+                CharacterSelection characterSelection = GetComponent<CharacterSelection>();
+                if (characterSelection != null)
+                {
+                    bool isBlueTeam = (characterSelection.teamId == 1);
+                    respawnManager.RespawnPlayer(gameObject, isBlueTeam);
+                }
+                else
+                {
+                    Debug.LogError("CharacterSelection component not found on player object.");
+                }
             }
         }
 

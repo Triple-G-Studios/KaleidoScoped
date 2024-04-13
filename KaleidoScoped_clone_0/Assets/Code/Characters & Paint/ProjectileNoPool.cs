@@ -67,6 +67,16 @@ namespace Kaleidoscoped
 
             var hitPlayer = collision.collider.GetComponentInParent<PlayerHealth>(); // Assuming you have a PlayerHealth script
 
+            CharacterSelection characterSelection = GetComponent<CharacterSelection>();
+            if (characterSelection != null)
+            {
+                // do nothing
+            }
+            else
+            {
+                Debug.LogError("CharacterSelection component not found on player object.");
+            }
+
             if (hitPlayer != null && NetworkServer.active)
             {
                 hitPlayer.TakeDamage(damage);
