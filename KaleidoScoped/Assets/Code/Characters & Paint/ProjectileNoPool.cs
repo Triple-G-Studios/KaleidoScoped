@@ -67,14 +67,30 @@ namespace Kaleidoscoped
 
             var hitPlayer = collision.collider.GetComponentInParent<PlayerHealth>(); // Assuming you have a PlayerHealth script
 
-            CharacterSelection characterSelection = GetComponent<CharacterSelection>();
-            if (characterSelection != null)
+            if (hitPlayer != null)
             {
-                // do nothing
-            }
-            else
-            {
-                Debug.LogError("CharacterSelection component not found on player object.");
+                // Get the CharacterSelection component of the shooter
+                CharacterSelection shooterCharacterSelection = shooter.GetComponent<CharacterSelection>();
+                if (shooterCharacterSelection == null)
+                {
+                    Debug.LogError("CharacterSelection component not found on shooter object.");
+                    return;
+                }
+
+                // Get the CharacterSelection component of the hit player
+                CharacterSelection hitPlayerCharacterSelection = hitPlayer.GetComponent<CharacterSelection>();
+                if (hitPlayerCharacterSelection == null)
+                {
+                    Debug.LogError("CharacterSelection component not found on hit player object.");
+                    return;
+                }
+
+                // Check if the shooter and hit player are on the same team
+                if (shooterCharacterSelection.teamId == hitPlayerCharacterSelection.teamId)
+                {
+                    Debug.Log("Hit player is on the same team as the shooter. Ignoring.");
+                    return;
+                }
             }
 
             if (hitPlayer != null && NetworkServer.active)
