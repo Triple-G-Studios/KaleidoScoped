@@ -144,6 +144,7 @@ namespace Kaleidoscoped
             characterSelection.playerName = msg.playerName;
             characterSelection.characterNumber = msg.characterNumber;
             characterSelection.characterColor = msg.characterColor;
+            characterSelection.teamId = msg.teamId;
 
             // call this to use this gameobject as the primary controller
             NetworkServer.AddPlayerForConnection(conn, playerObject);

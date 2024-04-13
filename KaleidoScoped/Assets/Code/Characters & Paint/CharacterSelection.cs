@@ -16,6 +16,7 @@ namespace Kaleidoscoped
         /*public TextMesh textMeshName;
         [SyncVar(hook = nameof(HookSetName))]*/
         public string playerName = "";
+        public int teamId = 1;
 
         /*void HookSetName(string _old, string _new)
         {

@@ -50,8 +50,8 @@ namespace Kaleidoscoped
         [ClientRpc]
         void RpcDeactivatePlayer(GameObject player)
         {
-            // player.SetActive(false);
-            Destroy(player);
+            player.SetActive(false);
+            // Destroy(player);
         }
 
         // Reactivate the player and reset health on all clients
