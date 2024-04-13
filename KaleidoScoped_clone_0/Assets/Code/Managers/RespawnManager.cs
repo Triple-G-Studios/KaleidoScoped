@@ -1,6 +1,7 @@
 using UnityEngine;
 using Mirror;
 using System.Collections;
+using static Kaleidoscoped.MyNetworkManager;
 
 namespace Kaleidoscoped
 {
@@ -49,13 +50,28 @@ namespace Kaleidoscoped
         [ClientRpc]
         void RpcDeactivatePlayer(GameObject player)
         {
-            player.SetActive(false);
+            // player.SetActive(false);
+            Destroy(player);
         }
 
         // Reactivate the player and reset health on all clients
         [ClientRpc]
         void RpcReactivatePlayer(GameObject player)
         {
+            /*if (true)
+            {
+                // you can send the message here, or wherever else you want
+                CreateCharacterMessage characterMessage = new CreateCharacterMessage
+                {
+                    playerName = StaticVariables.playerName,
+                    characterNumber = StaticVariables.characterNumber,
+                    characterColor = StaticVariables.characterColor,
+                    teamId = StaticVariables.teamId
+                };
+
+                print("REAL TEAM " + characterMessage.teamId);
+                NetworkClient.Send(characterMessage);
+            }*/
             player.SetActive(true);
             var playerHealth = player.GetComponent<PlayerHealth>();
             if (playerHealth != null)
