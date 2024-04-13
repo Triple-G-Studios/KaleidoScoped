@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefabs:
-  - {fileID: 3792134809077520071, guid: 154b66eb0f1df41b3aa350e2fd24e230, type: 3}
+  - {fileID: 3792134809077520071, guid: 0fe98f80988f1904c9f13b00d971e335, type: 3}
+  - {fileID: 3792134809077520071, guid: 52e15fadcb5f74b4499b2725d9f7d2d8, type: 3}

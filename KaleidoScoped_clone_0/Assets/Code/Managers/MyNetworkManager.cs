@@ -112,6 +112,15 @@ namespace Kaleidoscoped
             print("Is blue team: " + isBlueTeam);
             Debug.Log("Team " + team);
 
+            if (isBlueTeam)
+            {
+                msg.characterNumber = 0;
+            }
+            else
+            {
+                msg.characterNumber = 1;
+            }
+
             Transform startPos = respawnManager.GetSpawnPoint(isBlueTeam);
             if (startPos == null)
             {
@@ -137,6 +146,21 @@ namespace Kaleidoscoped
             GameObject playerObject = startPos != null
                 ? Instantiate(characterData.characterPrefabs[msg.characterNumber], startPos.position, startPos.rotation)
                 : Instantiate(characterData.characterPrefabs[msg.characterNumber]);
+
+            /*Renderer renderer = playerObject.GetComponentInChildren<CapsuleCollider>().GetComponent<Renderer>();
+            if (renderer != null) 
+            {
+                if (isBlueTeam)
+                {
+                    renderer.material.color = Color.blue;
+                } else
+                {
+                    renderer.material.color = Color.red;
+                }
+            } else
+            {
+                Debug.Log("Renderer not found");
+            }*/
 
             // Apply data from the message however appropriate for your game
             // Typically Player would be a component you write with syncvars or properties
