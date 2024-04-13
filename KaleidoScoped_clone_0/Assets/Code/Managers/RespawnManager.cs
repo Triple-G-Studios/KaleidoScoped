@@ -72,8 +72,10 @@ namespace Kaleidoscoped
                 print("REAL TEAM " + characterMessage.teamId);
                 NetworkClient.Send(characterMessage);
             }*/
+
             player.SetActive(true);
             var playerHealth = player.GetComponent<PlayerHealth>();
+            playerHealth.Invulnerable();
             if (playerHealth != null)
             {
                 playerHealth.health = 100f;

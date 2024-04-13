@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using System.Collections;
 
 namespace Kaleidoscoped
 {
@@ -8,11 +9,19 @@ namespace Kaleidoscoped
         public float health = 100f;
         public RespawnManager respawnManager;
 
+        private bool canTakeDmg = true;
+
         public RespawnMessageController respawnMessageController;
 
         [Server]
         public void TakeDamage(float damage)
         {
+            if (!canTakeDmg)
+            {
+                Debug.Log("Player cannot be damaged currently");
+                return;
+            }
+            
             health -= damage;
 
             if (health <= 0f)
@@ -41,6 +50,18 @@ namespace Kaleidoscoped
             {
                 respawnMessageController.ShowDeathMessage();
             }
+        }
+
+        private IEnumerator DisableDmgForPeriod(float period)
+        {
+            canTakeDmg = false;
+            yield return new WaitForSeconds(period);
+            canTakeDmg = true;
+        }
+
+        public void Invulnerable()
+        {
+            StartCoroutine(DisableDmgForPeriod(3f));
         }
     }
 }
