@@ -19,12 +19,10 @@ namespace Kaleidoscoped
         void Update()
         {
             prefabIndex = Random.Range(0, prefabs.Length);
+            spawnIndex = Random.Range(0, spawnPoints.Length);
 
             if (currentCollectible == null) { 
                 currentCollectible = Instantiate(prefabs[prefabIndex], spawnPoints[spawnIndex].transform.position, Quaternion.identity);
-                spawnIndex++;
-
-                if (spawnIndex >= spawnPoints.Length) spawnIndex = 0;
             }
         }
     }
