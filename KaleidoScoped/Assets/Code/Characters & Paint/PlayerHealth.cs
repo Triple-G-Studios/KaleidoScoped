@@ -8,6 +8,7 @@ namespace Kaleidoscoped
     {
         public float health = 100f;
         public RespawnManager respawnManager;
+        public GameObject forceField;
 
         private bool canTakeDmg = true;
 
@@ -68,7 +69,9 @@ namespace Kaleidoscoped
         private IEnumerator DisableDmgForPeriod(float period)
         {
             canTakeDmg = false;
+            forceField.SetActive(true);
             yield return new WaitForSeconds(period);
+            forceField.SetActive(false);
             canTakeDmg = true;
         }
 
