@@ -31,6 +31,7 @@ namespace Kaleidoscoped
 
             // Inform all clients to reactivate the player and reset health
             RpcReactivatePlayer(player);
+            player.GetComponent<PlayerInput>().enabled = true;
         }
 
         [ClientRpc]
@@ -41,7 +42,6 @@ namespace Kaleidoscoped
                 player.GetComponent<PlayerInput>().enabled = false;
                 player.transform.position = position;
                 player.transform.rotation = rotation;
-                player.GetComponent<PlayerInput>().enabled = true;
             }
             else
             {
