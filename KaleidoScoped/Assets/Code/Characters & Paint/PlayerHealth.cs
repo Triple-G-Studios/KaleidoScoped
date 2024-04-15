@@ -27,15 +27,14 @@ namespace Kaleidoscoped
 
             // Add a point to the team of the shooter
             CharacterSelection shooterCharacterSelection = shooter.GetComponent<CharacterSelection>();
-            KillCounter killCounter = GameObject.FindWithTag("KillCounter").GetComponent<KillCounter>();
-            if (killCounter != null)
+            TeamKillCounter teamKillCounter = GameObject.FindWithTag("TeamKillCounter").GetComponent<TeamKillCounter>();
+            if (teamKillCounter != null)
             {
-                killCounter.IncrementTeamKills(shooterCharacterSelection.teamId);
-                killCounter.IncrementKills();
+                teamKillCounter.IncrementTeamKills(shooterCharacterSelection.teamId);
             }
             else
             {
-                Debug.Log("No kill counter found");
+                Debug.Log("No team kill counter found");
             }
 
             if (health <= 0f)
