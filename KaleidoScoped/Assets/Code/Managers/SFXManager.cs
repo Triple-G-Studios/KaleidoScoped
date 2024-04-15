@@ -70,7 +70,7 @@ namespace Kaleidoscoped
 
         public void ChangeVolume()
         {
-            AudioListener.volume = sfxSlider.value;
+            AudioSource.volume = sfxSlider.value;
             Save();
         }
 

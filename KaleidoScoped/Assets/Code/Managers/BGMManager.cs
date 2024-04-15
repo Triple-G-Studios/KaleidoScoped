@@ -14,6 +14,8 @@ namespace Kaleidoscoped
 
         void Start()
         {
+            AudioSource = GetComponent<AudioSource>();
+
             if (!PlayerPrefs.HasKey("bgmVolume"))
             {
                 PlayerPrefs.SetFloat("bgmVolume", 1);
@@ -23,7 +25,6 @@ namespace Kaleidoscoped
                 Load();
             }
 
-            AudioSource = GetComponent<AudioSource>();
             System.Random random = new();
             int i = random.Next(0, 5);
             AudioClip current = BGMClips[i];
@@ -33,7 +34,7 @@ namespace Kaleidoscoped
 
         public void ChangeVolume()
         {
-            AudioListener.volume = bgmSlider.value;
+            AudioSource.volume = bgmSlider.value;
             Save();
         }
 

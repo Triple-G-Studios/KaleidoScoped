@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311924, g: 0.38073963, b: 0.3587269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -291,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -407, y: 61}
+  m_AnchoredPosition: {x: -407, y: 88}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &40706054
@@ -314,13 +314,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Work together (or solo) to kill all 12 enemies before time runs out!
+  m_text: 'Compete in Paintball! Whoever gets to 15 kills first or has the most points
+    when time runs out wins!
 
-    Paint
-    colors give players different side effects when they walk over them.
+    Paint colors give players different side effects
+    when they walk over them.
 
-    Shoot
-    capsules and collect their dropped orb to use their paint color!
+    Shoot capsules and collect their dropped orb to
+    use their paint color!
 
 '
   m_isRightToLeft: 0
@@ -838,7 +839,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199764364}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 879f0f95955514007bd93cdd14630df9, type: 3}
