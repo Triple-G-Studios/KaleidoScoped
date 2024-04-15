@@ -22,12 +22,12 @@ namespace Kaleidoscoped
             {
                 // Blue team won
                 winningTeam = "Blue team";
-                sceneLoader.VictoryScreen();
+                sceneLoader.VictoryScreen(winningTeam);
             } else if (teamKillCounter.DetermineWinner() == 2)
             {
                 // Red team won
                 winningTeam = "Red team";
-                sceneLoader.VictoryScreen();
+                sceneLoader.VictoryScreen(winningTeam);
             }
 
             /*if (killCounter.GetKills() >= 12)
