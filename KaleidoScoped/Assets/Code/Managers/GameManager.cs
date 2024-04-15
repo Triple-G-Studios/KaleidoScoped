@@ -5,7 +5,7 @@ namespace Kaleidoscoped
 {
     public class GameManager : MonoBehaviour
     {
-        public KillCounter killCounter;
+        public TeamKillCounter teamKillCounter;
         public Timer timer;
         public string winningTeam = "";
 
@@ -18,12 +18,12 @@ namespace Kaleidoscoped
 
         void CheckGameConditions()
         {
-            if (killCounter.DetermineWinner() == 1)
+            if (teamKillCounter.DetermineWinner() == 1)
             {
                 // Blue team won
                 winningTeam = "Blue team";
                 sceneLoader.VictoryScreen();
-            } else if (killCounter.DetermineWinner() == 2)
+            } else if (teamKillCounter.DetermineWinner() == 2)
             {
                 // Red team won
                 winningTeam = "Red team";
