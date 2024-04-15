@@ -7,6 +7,7 @@ namespace Kaleidoscoped
     {
         public KillCounter killCounter;
         public Timer timer;
+        public string winningTeam;
 
         public SceneLoader sceneLoader;
 
@@ -17,10 +18,22 @@ namespace Kaleidoscoped
 
         void CheckGameConditions()
         {
-            if (killCounter.GetKills() >= 12)
+            if (killCounter.DetermineWinner() == 1)
             {
+                // Blue team won
+                winningTeam = "Blue team";
+                sceneLoader.VictoryScreen();
+            } else if (killCounter.DetermineWinner() == 2)
+            {
+                // Red team won
+                winningTeam = "Red team";
                 sceneLoader.VictoryScreen();
             }
+
+            /*if (killCounter.GetKills() >= 12)
+            {
+                sceneLoader.VictoryScreen();
+            }*/
 
             if (timer.IsTimeUp())
             {

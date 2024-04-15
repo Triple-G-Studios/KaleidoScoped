@@ -11,11 +11,25 @@ namespace Kaleidoscoped
         // Outlets
         public Text counterText;
         int kills;
+        int blueKills;
+        int redKills;
 
         void Start()
         {
             kills = 0;
             DisplayKills();
+        }
+
+        public void IncrementTeamKills(int team)
+        {
+            if (team == 1)
+            {
+                blueKills++;
+            }
+            else
+            {
+                redKills++;
+            }
         }
 
         public void IncrementKills()
@@ -26,6 +40,29 @@ namespace Kaleidoscoped
                 SceneManager.LoadScene("Victory");
             }*/
             DisplayKills();
+        }
+
+        public int DetermineWinner()
+        {
+            if(blueKills > redKills)
+            {
+                if(blueKills >= 15)
+                {
+                    return 1;
+                } else
+                {
+                    return 0;
+                }
+            } else
+            {
+                if(redKills >= 15)
+                {
+                    return 2;
+                } else
+                {
+                    return 0;
+                }
+            }
         }
 
         public int GetKills()
