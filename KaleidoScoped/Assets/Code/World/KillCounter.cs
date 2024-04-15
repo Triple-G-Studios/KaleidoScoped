@@ -29,10 +29,12 @@ namespace Kaleidoscoped
             if (team == 1)
             {
                 blueKills++;
+                print("Blue Kills: " + blueKills);
             }
             else
             {
                 redKills++;
+                print("Red Kills: " + redKills);
             }
             DisplayKills();
         }
@@ -44,6 +46,7 @@ namespace Kaleidoscoped
             {
                 SceneManager.LoadScene("Victory");
             }*/
+            print("Kills: " + kills);
             DisplayKills();
         }
 

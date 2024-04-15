@@ -95,18 +95,8 @@ namespace Kaleidoscoped
 
             if (hitPlayer != null && NetworkServer.active)
             {
-                hitPlayer.TakeDamage(damage);
+                hitPlayer.TakeDamage(damage, shooter);
                 Destroy(gameObject);
-                // Add a point to the team of the shooter
-                CharacterSelection shooterCharacterSelection = shooter.GetComponent<CharacterSelection>();
-                KillCounter killCounter = GetComponent<KillCounter>();
-                if (killCounter != null) {
-                    killCounter.IncrementTeamKills(shooterCharacterSelection.teamId);
-                    killCounter.IncrementKills();
-                } else
-                {
-                    Debug.Log("No kill counter found");
-                }
             } else
             {
                 Debug.Log("Enemy player is null or server is inactive");

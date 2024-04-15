@@ -14,7 +14,7 @@ namespace Kaleidoscoped
         public RespawnMessageController respawnMessageController;
 
         [Server]
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage, GameObject shooter)
         {
             if (!canTakeDmg)
             {
@@ -23,6 +23,19 @@ namespace Kaleidoscoped
             }
             
             health -= damage;
+
+            // Add a point to the team of the shooter
+            CharacterSelection shooterCharacterSelection = shooter.GetComponent<CharacterSelection>();
+            KillCounter killCounter = GameObject.FindWithTag("KillCounter").GetComponent<KillCounter>();
+            if (killCounter != null)
+            {
+                killCounter.IncrementTeamKills(shooterCharacterSelection.teamId);
+                killCounter.IncrementKills();
+            }
+            else
+            {
+                Debug.Log("No kill counter found");
+            }
 
             if (health <= 0f)
             {
