@@ -2,6 +2,7 @@ using UnityEngine;
 using Mirror;
 using System.Collections;
 using static Kaleidoscoped.MyNetworkManager;
+using UnityEngine.InputSystem;
 
 namespace Kaleidoscoped
 {
@@ -37,9 +38,10 @@ namespace Kaleidoscoped
         {
             if (player != null && position != null && rotation != null)
             {
+                player.GetComponent<PlayerInput>().enabled = false;
                 player.transform.position = position;
                 player.transform.rotation = rotation;
-                player.GetComponent<LukePlayerMovement>().MoveSpeed = 0; // CHANGE IF BROKEN
+                player.GetComponent<PlayerInput>().enabled = true;
             }
             else
             {
