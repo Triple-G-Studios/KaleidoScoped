@@ -181,6 +181,11 @@ namespace Kaleidoscoped
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.C) && MenuController.instance.isPaused)
+            {
+                MenuController.instance.Continue();
+            }
+
             if (!isLocalPlayer || MenuController.instance.isPaused)
             {
                 return;
