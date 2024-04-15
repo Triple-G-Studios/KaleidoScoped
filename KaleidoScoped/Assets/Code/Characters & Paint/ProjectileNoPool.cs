@@ -99,13 +99,8 @@ namespace Kaleidoscoped
                 Destroy(gameObject);
                 // Add a point to the team of the shooter
                 CharacterSelection shooterCharacterSelection = shooter.GetComponent<CharacterSelection>();
-                if (shooterCharacterSelection.teamId == 1)
-                {
-                    // ADD POINT FOR BLUE TEAM
-                } else
-                {
-                    // ADD POINT FOR RED TEAM
-                }
+                KillCounter killCounter = GetComponent<KillCounter>();
+                killCounter.IncrementTeamKills(shooterCharacterSelection.teamId);
             } else
             {
                 Debug.Log("Enemy player is null or server is inactive");
