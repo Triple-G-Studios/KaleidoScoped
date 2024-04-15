@@ -39,6 +39,7 @@ namespace Kaleidoscoped
             {
                 player.transform.position = position;
                 player.transform.rotation = rotation;
+                player.GetComponent<LukePlayerMovement>().MoveSpeed = 0; // CHANGE IF BROKEN
             }
             else
             {
