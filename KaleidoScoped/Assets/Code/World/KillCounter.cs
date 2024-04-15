@@ -10,6 +10,8 @@ namespace Kaleidoscoped
     {
         // Outlets
         public Text counterText;
+        public Text blueCounterText;
+        public Text redCounterText;
         int kills;
         int blueKills;
         int redKills;
@@ -32,6 +34,7 @@ namespace Kaleidoscoped
             {
                 redKills++;
             }
+            DisplayKills();
         }
 
         public void IncrementKills()
@@ -81,6 +84,22 @@ namespace Kaleidoscoped
             else
             {
                 counterText.text = kills.ToString();
+            }
+            if (blueCounterText == null)
+            {
+                blueCounterText = GameObject.FindWithTag("BlueKillCounter").GetComponent<Text>();
+            }
+            else
+            {
+                blueCounterText.text = blueKills.ToString();
+            }
+            if (redCounterText == null)
+            {
+                redCounterText = GameObject.FindWithTag("RedKillCounter").GetComponent<Text>();
+            }
+            else
+            {
+                redCounterText.text = redKills.ToString();
             }
         }
     }
