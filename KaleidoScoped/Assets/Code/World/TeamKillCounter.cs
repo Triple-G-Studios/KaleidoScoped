@@ -11,10 +11,10 @@ namespace Kaleidoscoped
     public class TeamKillCounter : NetworkBehaviour
     {
         [SyncVar(hook = nameof(OnBlueKillsChanged))]
-        private int blueKills;
+        public int blueKills;
 
         [SyncVar(hook = nameof(OnRedKillsChanged))]
-        private int redKills;
+        public int redKills;
 
         public Text blueCounterText;
         public Text redCounterText;
@@ -57,11 +57,11 @@ namespace Kaleidoscoped
 
         public int DetermineWinner()
         {
-            if (blueKills > redKills && blueKills >= 5)
+            if (blueKills > redKills && blueKills >= 15)
             {
                 return 1;
             }
-            else if (redKills > blueKills && redKills >= 5)
+            else if (redKills > blueKills && redKills >= 15)
             {
                 return 2;
             }
@@ -69,6 +69,24 @@ namespace Kaleidoscoped
             {
                 return 0;
             }
+        }
+
+        public int DetermineWinnerEnd()
+        {
+            if (blueKills > redKills)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+
+        public int GetWinnerKills()
+        {
+            if (blueKills > redKills) return blueKills;
+            else return redKills;
         }
 
         private void DisplayKills()

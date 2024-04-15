@@ -16,10 +16,10 @@ namespace Kaleidoscoped
         {
             if (PlayerPrefs.GetString("winner") != null)
             {
-                textMeshPro.text = PlayerPrefs.GetString("winner") + " has won!";
+                textMeshPro.text = PlayerPrefs.GetString("winner") + " has won with " + PlayerPrefs.GetInt("winnerk") + " kills!";
 
-                if (PlayerPrefs.GetString("winner") == "Blue team") panel.GetComponent<Image>().color = new Color(2, 164, 211);
-                else if (PlayerPrefs.GetString("winner") == "Red team") panel.GetComponent<Image>().color = new Color(255, 105, 97);
+                if (PlayerPrefs.GetString("winner") == "Blue team") panel.GetComponent<Image>().color = new Color32(2, 164, 211, 255);
+                else if (PlayerPrefs.GetString("winner") == "Red team") panel.GetComponent<Image>().color = new Color32(255, 105, 97, 255);
 
             } else {
                 textMeshPro.text = "Game Over!";
