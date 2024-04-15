@@ -7,7 +7,7 @@ namespace Kaleidoscoped
     {
         public KillCounter killCounter;
         public Timer timer;
-        public string winningTeam;
+        public string winningTeam = "";
 
         public SceneLoader sceneLoader;
 

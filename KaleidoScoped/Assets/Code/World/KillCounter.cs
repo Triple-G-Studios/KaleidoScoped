@@ -17,6 +17,8 @@ namespace Kaleidoscoped
         void Start()
         {
             kills = 0;
+            blueKills = 0;
+            redKills = 0;
             DisplayKills();
         }
 
