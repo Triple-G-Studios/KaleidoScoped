@@ -367,6 +367,8 @@ namespace Kaleidoscoped
             SFXManager.instance.PlaySoundShoot();
             GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
             ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
+            Renderer projectileRenderer = projectileInstance.GetComponent<Renderer>();
+            projectileRenderer.material.color = color;
 
             // NetworkServer.Spawn(projectileInstance);
 
