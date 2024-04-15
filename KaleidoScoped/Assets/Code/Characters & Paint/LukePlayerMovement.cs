@@ -190,7 +190,7 @@ namespace Kaleidoscoped
             GroundedCheck();
             Move();
 
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 MenuController.instance.Pause();
             }
@@ -270,6 +270,11 @@ namespace Kaleidoscoped
             if (_input.move != Vector2.zero)
             {
                 // move
+                //if (!MenuController.instance.isPaused)
+                //{
+                //    return;
+                //}
+
                 inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
             }
 
