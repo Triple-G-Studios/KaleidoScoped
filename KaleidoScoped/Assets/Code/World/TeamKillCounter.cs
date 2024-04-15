@@ -57,11 +57,11 @@ namespace Kaleidoscoped
 
         public int DetermineWinner()
         {
-            if (blueKills > redKills && blueKills >= 15)
+            if (blueKills > redKills && blueKills >= 5)
             {
                 return 1;
             }
-            else if (redKills > blueKills && redKills >= 15)
+            else if (redKills > blueKills && redKills >= 5)
             {
                 return 2;
             }
