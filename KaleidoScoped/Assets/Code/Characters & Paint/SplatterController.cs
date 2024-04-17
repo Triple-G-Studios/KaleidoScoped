@@ -43,7 +43,7 @@ namespace Kaleidoscoped
 
                 else if (color == "red")
                 {
-                    targetPlayer.JumpHeight = 0f;
+                    targetPlayer.JumpHeight = 0.1f;
                 }
 
                 else
