@@ -19,7 +19,8 @@ namespace Kaleidoscoped
             LukePlayerMovement targetPlayer = other.GetComponent<LukePlayerMovement>();
             if (targetPlayer != null)
             {
-                Color paintColor = Color.red; // Default
+                CharacterSelection characterSelection = targetPlayer.GetComponent<CharacterSelection>();
+                Color paintColor = Color.blue; // Default
                 switch (color.ToLower())
                 {
                     case "purple":
@@ -41,6 +42,7 @@ namespace Kaleidoscoped
                 }
 
                 targetPlayer.color = paintColor;
+                characterSelection.paintColor = paintColor;
                 var paintballRenderer = paintballPrefab.GetComponent<Renderer>();
                 paintballRenderer.sharedMaterial.SetColor("_Color", paintColor); // Set paintball color
 

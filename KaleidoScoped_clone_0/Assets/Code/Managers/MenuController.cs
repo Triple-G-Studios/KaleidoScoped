@@ -18,7 +18,7 @@ namespace Kaleidoscoped
         {
             pauseMenuUI.SetActive(false);
             isPaused = false;
-            Time.timeScale = 1f;
+            //Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -27,7 +27,7 @@ namespace Kaleidoscoped
         {
             pauseMenuUI.SetActive(true);
             isPaused = true;
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }

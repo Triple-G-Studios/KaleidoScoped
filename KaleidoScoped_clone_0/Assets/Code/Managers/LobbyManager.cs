@@ -35,30 +35,35 @@ namespace Kaleidoscoped
         public void shotPress()
         {
             weapon = "shotgun";
+            StaticVariables.weapon = "shotgun";
             currentWeapon.text = "Current Weapon: Shotgun";
         }
 
         public void bluPress()
         {
             color = "blue";
+            StaticVariables.paintColor = Color.blue;
             currentColor.text = "Current Color: Blue";
         }
 
         public void redPress()
         {
             color = "red";
+            StaticVariables.paintColor = Color.red;
             currentColor.text = "Current Color: Red";
         }
 
         public void purPress()
         {
             color = "purple";
+            StaticVariables.paintColor = Color.magenta;
             currentColor.text = "Current Color: Purple";
         }
 
         public void grePress()
         {
             color = "green";
+            StaticVariables.paintColor = Color.green;
             currentColor.text = "Current Color: Green";
         }
 

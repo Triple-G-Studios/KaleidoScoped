@@ -27,6 +27,7 @@ namespace Kaleidoscoped
             Transform spawnPoint = GetSpawnPoint(isBlueTeam);
             RpcSetPlayerPosition(player, spawnPoint.position, spawnPoint.rotation);
 
+            ResetPlayerMovement(player);
 
             // Inform all clients to reactivate the player and reset health
             RpcReactivatePlayer(player);
@@ -43,6 +44,20 @@ namespace Kaleidoscoped
             else
             {
                 Debug.LogError("Either player/vector3/rotation are null in RpcSetPlayerPosition.");
+            }
+        }
+
+        void ResetPlayerMovement(GameObject player)
+        {
+            // Reset player's movement state
+            CharacterController characterController = player.GetComponent<CharacterController>();
+            if (characterController != null)
+            {
+                characterController.Move(Vector3.zero);
+            }
+            else
+            {
+                Debug.LogWarning("CharacterController component not found on the player.");
             }
         }
 

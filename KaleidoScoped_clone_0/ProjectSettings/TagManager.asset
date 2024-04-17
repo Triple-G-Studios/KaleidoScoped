@@ -20,6 +20,9 @@ TagManager:
   - RespawnPoint
   - RedSpawn
   - BlueSpawn
+  - BlueKillCounter
+  - RedKillCounter
+  - TeamKillCounter
   layers:
   - Default
   - TransparentFX

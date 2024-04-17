@@ -10,6 +10,7 @@ namespace Kaleidoscoped
     {
         // Outlets
         public Text counterText;
+
         int kills;
 
         void Start()
@@ -21,10 +22,6 @@ namespace Kaleidoscoped
         public void IncrementKills()
         {
             kills++;
-            /*if (kills >= 10)
-            {
-                SceneManager.LoadScene("Victory");
-            }*/
             DisplayKills();
         }
 
