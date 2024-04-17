@@ -19,6 +19,7 @@ namespace Kaleidoscoped
         public int teamId = 1;
         public string weapon = "rifle";
         public Color paintColor = Color.blue;
+        public int playerKills = 0;
 
         /*void HookSetName(string _old, string _new)
         {

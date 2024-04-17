@@ -49,7 +49,7 @@ namespace Kaleidoscoped
             {
                 Destroy(collision.gameObject); // Destroy projectile
                 Destroy(gameObject); // Destroy enemy
-                killCounter.IncrementKills(); // Update kills
+                // killCounter.IncrementKills(); // Update kills
                 enemyRemainingCounter.DecrementEnemies();
                 Instantiate(collectiblePrefab, transform.position, Quaternion.identity); // Spawn paint collectible
             }
