@@ -459,7 +459,7 @@ namespace Kaleidoscoped
                 ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
                 Renderer projectileRenderer = projectileInstance.GetComponent<Renderer>();
                color = shooterCharacterSelection.paintColor;
-               ChangeColor(shooterCharacterSelection.paintColor);
+               // ChangeColor(shooterCharacterSelection.paintColor);
                 projectileRenderer.material.color = color;
 
                 // NetworkServer.Spawn(projectileInstance);
