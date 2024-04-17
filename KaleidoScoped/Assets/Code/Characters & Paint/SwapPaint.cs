@@ -46,6 +46,8 @@ namespace Kaleidoscoped
                 var paintballRenderer = paintballPrefab.GetComponent<Renderer>();
                 paintballRenderer.sharedMaterial.SetColor("_Color", paintColor); // Set paintball color
 
+                targetPlayer.ChangeColor(paintColor);
+
                 Destroy(gameObject);
             }
         }

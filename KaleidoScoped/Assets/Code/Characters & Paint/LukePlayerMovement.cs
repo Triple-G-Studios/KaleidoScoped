@@ -458,7 +458,7 @@ namespace Kaleidoscoped
                 GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
                 ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
                 Renderer projectileRenderer = projectileInstance.GetComponent<Renderer>();
-               // color = shooterCharacterSelection.paintColor;
+               color = shooterCharacterSelection.paintColor;
                ChangeColor(shooterCharacterSelection.paintColor);
                 projectileRenderer.material.color = color;
 
