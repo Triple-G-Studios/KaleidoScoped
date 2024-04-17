@@ -9,6 +9,7 @@ namespace Kaleidoscoped
     {
         public static SplatterController instance;
         public string color;
+        public Color tempColor;
 
         private void Awake()
         {
@@ -23,8 +24,24 @@ namespace Kaleidoscoped
             {
                 //if it has a first person controller, it has a playercontroller
                 //color = other.GetComponent<PlayerController>().currentColor;
-
-                if (color == "purple")
+                Renderer renderer = this.GetComponent<Renderer>();
+                tempColor = renderer.material.color;
+                if (tempColor == Color.magenta)
+                {
+                    color = "purple";
+                } else if (tempColor == Color.blue)
+                {
+                    color = "blue";
+                }
+                else if (tempColor == Color.green)
+                {
+                    color = "green";
+                }
+                else if (tempColor == Color.red)
+                {
+                    color = "red";
+                }
+                if (color == "purple" || color == "magenta")
                 {
                     targetPlayer.JumpHeight = 2.4f;
                 }

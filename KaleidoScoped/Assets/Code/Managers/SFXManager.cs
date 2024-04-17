@@ -14,8 +14,7 @@ namespace Kaleidoscoped
         AudioSource AudioSource;
         public AudioClip splatSound;
         public AudioClip shootSound;
-        public AudioClip grassySound;
-        public AudioClip rockySound;
+        public AudioClip killSound;
         public AudioClip gameOverSound;
         public AudioClip victorySound;
 
@@ -48,14 +47,9 @@ namespace Kaleidoscoped
             AudioSource.PlayOneShot(shootSound);
         }
 
-        public void PlayGrassySound()
+        public void PlaySoundKill()
         {
-            AudioSource.PlayOneShot(shootSound);
-        }
-
-        public void PlayRockySound()
-        {
-            AudioSource.PlayOneShot(shootSound);
+            AudioSource.PlayOneShot(killSound);
         }
 
         public void PlayGameOverSound()

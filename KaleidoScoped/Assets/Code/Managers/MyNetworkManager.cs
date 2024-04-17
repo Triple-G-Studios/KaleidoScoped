@@ -32,6 +32,9 @@ namespace Kaleidoscoped
             public int characterNumber;
             public Color characterColor;
             public int teamId;
+            public string weapon;
+            public Color paintColor;
+            public int playerKills;
         }
 
         public struct ReplaceCharacterMessage : NetworkMessage
@@ -86,7 +89,10 @@ namespace Kaleidoscoped
                     playerName = StaticVariables.playerName,
                     characterNumber = StaticVariables.characterNumber,
                     characterColor = StaticVariables.characterColor,
-                    teamId = StaticVariables.teamId
+                    teamId = StaticVariables.teamId,
+                    weapon = StaticVariables.weapon,
+                    paintColor = StaticVariables.paintColor,
+                    playerKills = StaticVariables.playerKills
                 };
 
                 NetworkClient.Send(characterMessage);
@@ -169,6 +175,9 @@ namespace Kaleidoscoped
             characterSelection.characterNumber = msg.characterNumber;
             characterSelection.characterColor = msg.characterColor;
             characterSelection.teamId = msg.teamId;
+            characterSelection.weapon = msg.weapon;
+            characterSelection.paintColor = msg.paintColor;
+            characterSelection.playerKills = msg.playerKills;
 
             // call this to use this gameobject as the primary controller
             NetworkServer.AddPlayerForConnection(conn, playerObject);

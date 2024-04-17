@@ -19,15 +19,15 @@ namespace Kaleidoscoped
             DisplayKills();
         }
 
-        public void IncrementKills()
+        public void IncrementKills(CharacterSelection shooter)
         {
-            kills++;
+            shooter.playerKills++;
             DisplayKills();
         }
 
         public int GetKills()
         {
-            return kills;
+            return StaticVariables.playerKills;
         }
 
         private void DisplayKills()

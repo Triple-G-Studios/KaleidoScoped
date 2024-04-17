@@ -5,8 +5,9 @@ namespace Kaleidoscoped
 {
     public class GameManager : MonoBehaviour
     {
-        public KillCounter killCounter;
+        public TeamKillCounter teamKillCounter;
         public Timer timer;
+        public string winningTeam = "";
 
         public SceneLoader sceneLoader;
 
@@ -17,14 +18,37 @@ namespace Kaleidoscoped
 
         void CheckGameConditions()
         {
-            if (killCounter.GetKills() >= 12)
+            if (teamKillCounter.DetermineWinner() == 1)
+            {
+                // Blue team won
+                winningTeam = "Blue team";
+                sceneLoader.VictoryScreen(winningTeam, teamKillCounter.GetWinnerKills());
+            } else if (teamKillCounter.DetermineWinner() == 2)
+            {
+                // Red team won
+                winningTeam = "Red team";
+                sceneLoader.VictoryScreen(winningTeam, teamKillCounter.GetWinnerKills());
+            }
+
+            /*if (killCounter.GetKills() >= 12)
             {
                 sceneLoader.VictoryScreen();
-            }
+            }*/
 
             if (timer.IsTimeUp())
             {
-                sceneLoader.GameOverScreen();
+                if (teamKillCounter.DetermineWinnerEnd() == 1)
+                {
+                    // Blue team won
+                    winningTeam = "Blue team";
+                    sceneLoader.VictoryScreen(winningTeam, teamKillCounter.GetWinnerKills());
+                }
+                else if (teamKillCounter.DetermineWinnerEnd() == 2)
+                {
+                    // Red team won
+                    winningTeam = "Red team";
+                    sceneLoader.VictoryScreen(winningTeam, teamKillCounter.GetWinnerKills());
+                }
             }
         }
     }

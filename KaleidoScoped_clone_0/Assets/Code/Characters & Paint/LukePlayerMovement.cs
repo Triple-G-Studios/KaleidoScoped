@@ -181,6 +181,11 @@ namespace Kaleidoscoped
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.C) && MenuController.instance.isPaused)
+            {
+                MenuController.instance.Continue();
+            }
+
             if (!isLocalPlayer || MenuController.instance.isPaused)
             {
                 return;
@@ -190,7 +195,7 @@ namespace Kaleidoscoped
             GroundedCheck();
             Move();
 
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 MenuController.instance.Pause();
             }
@@ -360,15 +365,68 @@ namespace Kaleidoscoped
         {
             // Handle sounds here I think
             SFXManager.instance.PlaySoundShoot();
-            GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
-            ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
 
-            // NetworkServer.Spawn(projectileInstance);
-
-            if (projectileScript != null)
+            CharacterSelection shooterCharacterSelection = shooter.GetComponent<CharacterSelection>();
+            if (shooterCharacterSelection == null)
             {
-                projectileScript.Initialize(forward, 75f, color, currentColor, gameObject);
+                Debug.LogError("CharacterSelection component not found on shooter object.");
+                return;
             }
+            /*if (shooterCharacterSelection.weapon == "shotgun")
+            {
+                print("Working");
+                GameObject projectileInstance1 = Instantiate(projectilePrefab, position * 400f, Quaternion.LookRotation(povOrigin.forward) * Quaternion.Euler(Vector3.forward * 10));
+                ProjectileNoPool projectileScript1 = projectileInstance1.GetComponent<ProjectileNoPool>();
+                Renderer projectileRenderer1 = projectileInstance1.GetComponent<Renderer>();
+                projectileRenderer1.material.color = color;
+                if (projectileScript1 != null)
+                {
+                    projectileScript1.Initialize(forward * 0.1f, 75f, color, currentColor, gameObject);
+                } else
+                {
+                    Debug.Log("Shotgun 1 not working");
+                }
+
+                GameObject projectileInstance2 = Instantiate(projectilePrefab, position * 200f, Quaternion.LookRotation(povOrigin.forward));
+                ProjectileNoPool projectileScript2 = projectileInstance2.GetComponent<ProjectileNoPool>();
+                Renderer projectileRenderer2 = projectileInstance2.GetComponent<Renderer>();
+                projectileRenderer2.material.color = color;
+                if (projectileScript2 != null)
+                {
+                    projectileScript2.Initialize(forward * 1f, 75f, color, currentColor, gameObject);
+                }
+                else
+                {
+                    Debug.Log("Shotgun 2 not working");
+                }
+
+                GameObject projectileInstance3 = Instantiate(projectilePrefab, position, Quaternion.LookRotation(povOrigin.forward) * Quaternion.Euler(Vector3.forward * -10));
+                ProjectileNoPool projectileScript3 = projectileInstance3.GetComponent<ProjectileNoPool>();
+                Renderer projectileRenderer3 = projectileInstance3.GetComponent<Renderer>();
+                projectileRenderer3.material.color = color;
+                if (projectileScript3 != null)
+                {
+                    projectileScript3.Initialize(forward * 10f, 75f, color, currentColor, gameObject);
+                }
+                else
+                {
+                    Debug.Log("Shotgun 3 not working");
+                }
+            } else
+            {*/
+                GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
+                ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
+                Renderer projectileRenderer = projectileInstance.GetComponent<Renderer>();
+                color = shooterCharacterSelection.paintColor;
+                projectileRenderer.material.color = color;
+
+                // NetworkServer.Spawn(projectileInstance);
+
+                if (projectileScript != null)
+                {
+                    projectileScript.Initialize(forward, 75f, color, currentColor, gameObject);
+                }
+            /*}*/
 
         }
 

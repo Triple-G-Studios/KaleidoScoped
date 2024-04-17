@@ -445,6 +445,8 @@ MonoBehaviour:
   characterNumber: 0
   playerName: 
   teamId: 1
+  weapon: rifle
+  paintColor: {r: 0, g: 0, b: 1, a: 1}
   characterColor: {r: 0, g: 0, b: 0, a: 0}
   characterRenderers: []
 --- !u!23 &4816774134061881171
@@ -34671,7 +34673,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b58df24f5dd0114f87820deeb4d57f9, type: 2}
+  - {fileID: 2100000, guid: b64b62490d85a4fcf8d9ede89554e75f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -95,17 +95,8 @@ namespace Kaleidoscoped
 
             if (hitPlayer != null && NetworkServer.active)
             {
-                hitPlayer.TakeDamage(damage);
+                hitPlayer.TakeDamage(damage, shooter);
                 Destroy(gameObject);
-                // Add a point to the team of the shooter
-                CharacterSelection shooterCharacterSelection = shooter.GetComponent<CharacterSelection>();
-                if (shooterCharacterSelection.teamId == 1)
-                {
-                    // ADD POINT FOR BLUE TEAM
-                } else
-                {
-                    // ADD POINT FOR RED TEAM
-                }
             } else
             {
                 Debug.Log("Enemy player is null or server is inactive");

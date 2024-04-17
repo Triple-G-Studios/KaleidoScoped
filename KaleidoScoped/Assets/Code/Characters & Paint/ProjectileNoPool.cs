@@ -95,6 +95,7 @@ namespace Kaleidoscoped
 
             if (hitPlayer != null && NetworkServer.active)
             {
+                SFXManager.instance.PlaySoundKill();
                 hitPlayer.TakeDamage(damage, shooter);
                 Destroy(gameObject);
             } else

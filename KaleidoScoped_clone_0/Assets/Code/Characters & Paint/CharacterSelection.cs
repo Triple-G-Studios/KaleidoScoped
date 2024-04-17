@@ -17,6 +17,8 @@ namespace Kaleidoscoped
         [SyncVar(hook = nameof(HookSetName))]*/
         public string playerName = "";
         public int teamId = 1;
+        public string weapon = "rifle";
+        public Color paintColor = Color.blue;
 
         /*void HookSetName(string _old, string _new)
         {

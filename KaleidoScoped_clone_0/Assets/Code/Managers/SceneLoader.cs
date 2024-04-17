@@ -13,10 +13,12 @@ namespace Kaleidoscoped
             SceneManager.LoadScene("JoeyScene");
         }
 
-        public void VictoryScreen()
+        public void VictoryScreen(string winner, int winnerKills)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            PlayerPrefs.SetString("winner", winner);
+            PlayerPrefs.SetInt("winnerk", winnerKills);
             SceneManager.LoadScene("Victory");
         }
 
