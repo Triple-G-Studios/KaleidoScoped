@@ -89,7 +89,10 @@ namespace Kaleidoscoped
 
         public ProjectilePool projectilePool;
 
+        [SyncVar(hook = nameof(OnCurrentColorChanged))]
         public string currentColor = "blue";
+
+        [SyncVar(hook = nameof(OnColorChanged))]
         public Color color = Color.blue;
 
         public string weapon = "rifle";
@@ -206,6 +209,42 @@ namespace Kaleidoscoped
         private void LateUpdate()
         {
             if (!MenuController.instance.isPaused) CameraRotation();
+        }
+        
+        private void OnCurrentColorChanged(string oldColor, string newColor)
+        {
+            currentColor = newColor;
+        }
+
+        private void OnColorChanged(Color oldColor, Color newColor)
+        {
+            color = newColor;
+        }
+
+        [Command]
+        private void CmdChangeCurrentColor(string newColor)
+        {
+            currentColor = newColor;
+        }
+
+        [Command]
+        private void CmdChangeColor(Color newColor)
+        {
+            color = newColor;
+        }
+
+        public void ChangeCurrentColor(string newColor)
+        {
+            if (!isLocalPlayer) return;
+
+            CmdChangeCurrentColor(newColor);
+        }
+
+        public void ChangeColor(Color newColor)
+        {
+            if (!isLocalPlayer) return;
+
+            CmdChangeColor(newColor);
         }
 
         private void GroundedCheck()
@@ -419,7 +458,7 @@ namespace Kaleidoscoped
                 GameObject projectileInstance = Instantiate(projectilePrefab, position, rotation);
                 ProjectileNoPool projectileScript = projectileInstance.GetComponent<ProjectileNoPool>();
                 Renderer projectileRenderer = projectileInstance.GetComponent<Renderer>();
-                color = shooterCharacterSelection.paintColor;
+                ChangeColor(shooterCharacterSelection.paintColor);
                 projectileRenderer.material.color = color;
 
                 // NetworkServer.Spawn(projectileInstance);
